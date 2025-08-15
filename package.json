@@ -1,0 +1,17 @@
+{
+  "name": "nojdrepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "sass": "sass scss:wwwroot/css --no-source-map --style=compressed",
+  "sass:watch": "sass scss:wwwroot/css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.90.0"
+  }
+}
