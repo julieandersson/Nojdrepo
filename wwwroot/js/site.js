@@ -7,6 +7,7 @@ import { initShrinkLogoOnScroll } from './header/shrinkLogo.js';
 import { initReorderTopmenuForTablet } from './header/reorderTopmenu.js';
 import { initDropdownDelay } from './header/dropdownDelay.js';
 import { initFlyout } from './ui/flyout.js';
+import { initCategoriesProducts } from './pages/categories-products.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // header & navigationsbeteenden
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initShrinkLogoOnScroll();
   initReorderTopmenuForTablet();
   initDropdownDelay();
+  initCategoriesProducts();
 
   // Flyouts (login och varukorg)
   initFlyout({

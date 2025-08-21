@@ -1,55 +1,100 @@
 /**
- * flyout.js — sidoflyout för tex logga in och varukorg
- * Bygger på CSS-klasser:
+ * flyout.js — sidoflyout (t.ex. login, cart, filterpanel)
+ * klasser (default):
  *   panel:  .open (visas), .closing (ut-animering)
  *   overlay: .visible (visas)
- * Hanterar ESC, overlay-klick och återfokuserar trigger efter stängning.
+ * stöd för att byta klassnamn via options (t.ex. openClass: 'is-open')
+ * stöd för flera close-triggers via extraCloseSels.
  */
-export function initFlyout({ triggerSel, panelSel, overlaySel, closeSel }) {
-  // hämtar element, avbryter om något saknas
+export function initFlyout({
+  triggerSel,
+  panelSel,
+  overlaySel,
+  closeSel,
+  extraCloseSels = [],
+
+  // klassnamn (bakåtkompatibla defaults)
+  openClass = 'open',
+  closingClass = 'closing',
+  overlayVisibleClass = 'visible',
+
+  focusBackToTrigger = true
+}) {
   const trigger  = document.querySelector(triggerSel);
   const panel    = document.querySelector(panelSel);
   const overlay  = document.querySelector(overlaySel);
   const closeBtn = document.querySelector(closeSel);
-  if (!trigger || !panel || !overlay || !closeBtn) return;
 
-  // låser för att undvika spam-öppning/stängning
+  if (!trigger || !panel || !overlay || !closeBtn) return null;
+
+  const extraCloses = extraCloseSels.flatMap(sel => Array.from(document.querySelectorAll(sel)));
+
   let isAnimating = false;
 
-  // öppnar panelen/flyouten
-  function openFlyout() {
-    if (isAnimating) return;
+  function open() {
+    if (isAnimating || isOpen()) return;
     isAnimating = true;
-    panel.classList.remove('closing');
-    panel.classList.add('open');
-    overlay.classList.add('visible');
+
+    panel.classList.remove(closingClass);
+    panel.classList.add(openClass);
+    overlay.classList.add(overlayVisibleClass);
+
+    // gör panel fokuserbar tillfälligt
+    panel.setAttribute('tabindex', '-1');
+    panel.focus();
+
     panel.addEventListener('transitionend', () => { isAnimating = false; }, { once: true });
   }
 
-  // stänger panelen/flyouten
-  function closeFlyout() {
-    if (isAnimating) return;
+  function close() {
+    if (isAnimating || !isOpen()) return;
     isAnimating = true;
-    panel.classList.add('closing');
-    panel.classList.remove('open');
+
+    panel.classList.add(closingClass);
+    panel.classList.remove(openClass);
+
     panel.addEventListener('transitionend', () => {
-      panel.classList.remove('closing');
-      overlay.classList.remove('visible');
+      panel.classList.remove(closingClass);
+      overlay.classList.remove(overlayVisibleClass);
       isAnimating = false;
-      trigger.focus();
+
+      panel.removeAttribute('tabindex');
+      if (focusBackToTrigger) trigger.focus();
     }, { once: true });
   }
 
+  function isOpen() {
+    return panel.classList.contains(openClass);
+  }
+
   // togglar via trigger
-  trigger.addEventListener('click', (e) => {
+  const onTriggerClick = (e) => {
     e.preventDefault();
-    panel.classList.contains('open') ? closeFlyout() : openFlyout();
-  });
+    isOpen() ? close() : open();
+  };
+  trigger.addEventListener('click', onTriggerClick);
 
   // stänghändelser
-  closeBtn.addEventListener('click', closeFlyout);
-  overlay.addEventListener('click', closeFlyout);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.classList.contains('open')) closeFlyout();
-  });
+  const onClose = () => close();
+  closeBtn.addEventListener('click', onClose);
+  overlay.addEventListener('click', onClose);
+  extraCloses.forEach(btn => btn.addEventListener('click', onClose));
+  const onKeydown = (e) => {
+    if (e.key === 'Escape' && isOpen()) close();
+  };
+  document.addEventListener('keydown', onKeydown);
+
+  // för ev. reset vid breakpoint
+  return {
+    open,
+    close,
+    isOpen,
+    dispose() {
+      trigger.removeEventListener('click', onTriggerClick);
+      closeBtn.removeEventListener('click', onClose);
+      overlay.removeEventListener('click', onClose);
+      extraCloses.forEach(btn => btn.removeEventListener('click', onClose));
+      document.removeEventListener('keydown', onKeydown);
+    }
+  };
 }

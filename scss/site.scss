@@ -14,6 +14,8 @@
 @use 'components/flyouts';
 @use 'components/subcategories';
 @use 'components/products';
-@use "components/breadcrumbs";
+@use 'components/product-listing';
+@use 'components/breadcrumbs';
+@use 'components/categories-images';
 
 @use 'pages/categories';
