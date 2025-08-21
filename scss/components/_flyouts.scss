@@ -1,0 +1,154 @@
+/* ================================
+   FLYOUT PANEL (login/kundvagn)
+   ================================ */
+
+.login-flyout {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(400px, 100vw);
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform var(--flyout-dur) var(--flyout-ease);
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+
+  &.open    { transform: translateX(0); }
+  &.closing { transform: translateX(100%); }
+
+  /* Header */
+  &-header {
+    background-color: #f28c28;
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+
+    i { font-size: 18px; }
+  }
+
+  /* close-knapp */
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  /* innehåll */
+  &-content {
+    padding: 1.5rem;
+    flex: 1;
+    overflow-y: auto;
+
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin: 1rem 0 .4rem;
+      font-size: 0.95rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="checkbox"] { margin-right: 0.5rem; }
+
+    .login-submit {
+      background-color: #002f6c;
+      color: #fff;
+      font-size: 1rem;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+
+      &:hover { background-color: #001f4d; }
+    }
+
+    a {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #333;
+      text-align: right;
+      display: block;
+      text-decoration: none;
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+/* Kundvagnsspecifikt innehåll inne i flyouten */
+.cart-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cart-empty { font-style: italic; text-align: center; margin-top: 1rem; }
+.cart-summary { margin-top: auto; }
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-top: 3rem;
+  font-size: 1rem;
+}
+
+.cart-submit {
+  background-color: #ddd;
+  color: #888;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+}
+
+@media screen and (max-width: 410px) {
+  .login-flyout {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .login-flyout {
+    width: 340px;
+  }
+}

@@ -1,3 +1,1124 @@
+@charset "UTF-8";
+/* Base */
+/* ================================
+   Google fonts - laddar Open Sans
+   ================================ */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+/* ================================
+   nollställning + border-box
+   ================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Design tokens som CSS-variabler */
+:root {
+  --flyout-dur: 300ms; /* standard-duration för flyout/overlay */
+  --flyout-ease: ease-in-out; /* standard-easing för flyout/overlay */
+}
+
+/* Grundinställningar */
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  line-height: 2em;
+  min-height: 100vh; /* fyller viewport-höjd */
+  background-color: #f3faff; /* ljusblå bakgrund */
+}
+
+/* Rubriker */
+h1 {
+  font-size: 30px;
+  text-align: left;
+  padding-bottom: 20px;
+  padding-top: 5px;
+}
+
+h2,
+h3 {
+  padding-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1096px) {
+  h1 {
+    padding-top: 5px;
+  }
+}
+@media screen and (max-width: 861px) {
+  h3 {
+    font-size: 0.9rem;
+    margin-bottom: -10px;
+  }
+}
+/* Layout */
+/* ================================
+   Huvudcontainer + wrapper för sticky header-layout
+   ================================ */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1500px;
+  margin: -25px auto; /* kompenserar visuell spacing uppåt */
+  justify-content: center;
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1096px) {
+  main {
+    padding: 30px 20px;
+  }
+}
+/* ================================
+   HEADER: logo, topmenu, mainmenu
+   ================================ */
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  z-index: 1500;
+  top: 0;
+  left: 0;
+}
+
+.logo-wrapper {
+  position: relative;
+}
+
+.logo {
+  position: fixed;
+  top: -1px;
+  padding-left: 40px;
+}
+.logo img {
+  width: 102px;
+  transition: width 0.3s ease, transform 0.3s ease;
+}
+.logo.shrink img {
+  width: 82px;
+}
+
+.content-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Topmenu (mörkblå listen) */
+.topmenu {
+  background-color: #003978;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.topmenu .topmenu-inner {
+  max-width: 1500px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  padding-left: 170px;
+  width: 100%;
+}
+.topmenu .topmenu-inner .menu-links {
+  display: flex;
+  gap: 50px;
+}
+.topmenu .topmenu-inner .menu-links a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+}
+.topmenu .topmenu-inner .menu-links a svg {
+  width: 18px;
+  height: 18px;
+}
+.topmenu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+/* Mainmenu (ljusblå raden) */
+.mainmenu {
+  background-color: #c8e2ff;
+  width: 100%;
+  height: 80px;
+  padding: 20px 0;
+}
+.mainmenu .mainmenu-inner {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 40px;
+  padding-left: 170px;
+}
+
+/* Sökfält */
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.3s ease, max-width 0.3s ease;
+}
+.search-wrapper.expand-left {
+  margin-left: -25px;
+  max-width: calc(100% + 25px);
+}
+.search-wrapper .search-form {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.search-wrapper .search-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.search-wrapper .search-form .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #7d7d7d;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Knappar (kontakta/logga in/kundvagn) */
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.menu-button {
+  color: #fff;
+  text-decoration: none;
+  padding: 3px 25px;
+  border-radius: 3px;
+  font-weight: 500;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Individuella färger */
+#contactBtn,
+#loginBtn {
+  background-color: #003978;
+}
+#contactBtn:hover,
+#loginBtn:hover {
+  background-color: #002a5c;
+}
+
+#cartBtn {
+  background-color: #F1942E;
+}
+#cartBtn:hover {
+  background-color: #e98c1b;
+}
+
+@media screen and (max-width: 1316px) {
+  .topmenu-inner .menu-links {
+    gap: 30px !important;
+  }
+  .menu-links a {
+    font-size: 12px !important;
+  }
+}
+/* HEADER/TOPMENU – mobil & tablet-layouter */
+@media screen and (max-width: 1096px) {
+  /* logga & headerlayout */
+  .logo {
+    padding-left: 90px;
+    position: absolute;
+  }
+  .logo img {
+    width: 80px;
+  }
+  header {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+  }
+  .topmenu {
+    position: relative !important;
+    z-index: 1000 !important;
+  }
+  .topmenu-inner {
+    padding: 5px 20px !important;
+    justify-content: center !important;
+  }
+  .topmenu-inner .menu-links {
+    gap: 40px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .mainmenu-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mainmenu {
+    height: 145px;
+  }
+  .search-wrapper {
+    order: 2;
+    width: 100%;
+    padding-top: 15px;
+  }
+  .button-group {
+    order: 1;
+    align-self: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .search-form {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 442px) {
+  .search-form {
+    padding-top: 4px;
+  }
+}
+@media screen and (max-width: 981px) {
+  .topmenu-inner .menu-links {
+    gap: 20px !important;
+    font-size: 13px !important;
+  }
+}
+@media screen and (max-width: 831px) {
+  .topmenu-inner .menu-links {
+    gap: 7px !important;
+    font-size: 11px !important;
+  }
+}
+@media screen and (max-width: 861px) {
+  .topmenu-inner {
+    justify-content: flex-start !important; /* trycker allt till vänster */
+    padding-left: 20px !important;
+  }
+  .topmenu-inner .menu-links {
+    justify-content: flex-start !important; /* länkarna vänsterställs */
+    gap: 50px !important;
+  }
+  .topmenu-inner .menu-links a {
+    display: none !important;
+  }
+  .topmenu-inner .menu-links a.show-tablet {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    text-decoration: none !important;
+  }
+}
+@media screen and (max-width: 622px) {
+  .topmenu-inner .menu-links {
+    gap: 30px !important;
+  }
+}
+@media screen and (max-width: 580px) {
+  .topmenu-inner .menu-links {
+    gap: 20px !important;
+  }
+  .topmenu-inner .menu-links a.show-tablet {
+    font-size: 12px !important;
+  }
+}
+@media screen and (max-width: 553px) {
+  .topmenu-inner .menu-links a.show-tablet {
+    display: none !important;
+  }
+  /* visar endast mobil-länken */
+  .topmenu-inner .menu-links a.show-mobile {
+    display: flex !important;
+  }
+}
+@media screen and (max-width: 610px) {
+  .search-wrapper {
+    padding-top: 27px;
+  }
+  .search-form input {
+    font-size: 15px !important;
+  }
+  .logo {
+    padding-left: 85px;
+  }
+  .button-group {
+    gap: 30px;
+  }
+  .button-group .menu-button {
+    background: none; /* ingen bakgrund */
+    box-shadow: none; /* ingen skugga */
+    padding: 0;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-group .menu-button span {
+    display: none;
+  }
+  #contactBtn,
+  #loginBtn,
+  #cartBtn {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .button-group .menu-button {
+    color: inherit !important;
+  }
+  #contactBtn i,
+  #loginBtn i {
+    color: #003978 !important;
+  }
+  #cartBtn i {
+    color: #F1942E !important;
+  }
+  #contactBtn:hover i,
+  #loginBtn:hover i {
+    color: #002a5c !important;
+  }
+  #cartBtn:hover i {
+    color: #e98c1b !important;
+  }
+}
+@media screen and (max-width: 442px) {
+  .button-group .menu-button {
+    font-size: 22px;
+  }
+}
+/* ================================
+   NAVIGATION + MEGAMENY
+   ================================ */
+.navigation {
+  background-color: #fff;
+  width: 100%;
+  padding: 7px 0;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-items: center;
+  /* Desktop default: visa kategorier, dölj mobilvyer */
+}
+.navigation nav {
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+}
+.navigation ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px;
+  margin: 0;
+  padding: 0 30px;
+}
+.navigation .mobile-header {
+  display: none;
+}
+.navigation nav .menu-root {
+  display: none;
+}
+.navigation nav .menu-cats {
+  display: flex;
+}
+.navigation a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+}
+.navigation a:hover {
+  color: #F1942E;
+}
+.navigation svg {
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* Hoverfärg för .link-row-knappar */
+.link-row:hover {
+  color: #F1942E;
+}
+
+/* Dropdown-meny (3 kolumner) */
+.has-dropdown {
+  position: static;
+}
+.has-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 30px 40px;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  gap: 60px;
+  align-items: start;
+  box-shadow: none;
+  /* visning + animation */
+  margin-top: 3px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  transform: translateY(6px);
+  /* gemensam list- och länk-stil i kolumnerna */
+  /* vänsterkolumnens rubrik */
+}
+.has-dropdown .dropdown-menu.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  box-shadow: 0 -6px #fff, 0 4px 2px -2px rgba(0, 0, 0, 0.1), -2px 0 2px -2px rgba(0, 0, 0, 0.1), 2px 0 2px -2px rgba(0, 0, 0, 0.1);
+}
+.has-dropdown .dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.has-dropdown .dropdown-menu li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  display: inline-block;
+  padding: 2px 0;
+}
+.has-dropdown .dropdown-menu li a:hover {
+  color: #F1942E;
+}
+.has-dropdown .dropdown-menu .dropdown-left p {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Hamburger-knapp (synlig i mobil) */
+.hamburger-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* DESKTOP: visar bara produktkategorierna, döljer mobilhuvud + rotmeny */
+@media (min-width: 1097px) {
+  .navigation .mobile-header,
+  .navigation .menu-root {
+    display: none;
+  }
+  .navigation > nav > ul.menu-cats {
+    display: flex;
+  }
+}
+@media screen and (max-width: 1475px) {
+  .navigation ul {
+    gap: 60px;
+  }
+  .navigation a {
+    font-size: 14px;
+  }
+  .dropdown-menu ul {
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .navigation ul {
+    gap: 50px;
+  }
+  .dropdown-menu ul {
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 1316px) {
+  .menu-links a {
+    font-size: 12px;
+  }
+  .navigation ul {
+    gap: 40px;
+  }
+  .dropdown-menu ul {
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .navigation ul {
+    gap: 30px;
+  }
+  .dropdown-menu ul {
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 1159px) {
+  .navigation ul {
+    gap: 23px;
+  }
+  .dropdown-menu ul {
+    gap: 5px;
+  }
+}
+/* MOBIL / TABLET: off-canvas navigation, hamburgare, panelbeteende */
+@media screen and (max-width: 1096px) {
+  /* visar hamburgarikonen i mobil */
+  .hamburger-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 1001;
+  }
+  .hamburger-toggle svg {
+    width: 45px;
+    height: 45px;
+    stroke: #003978;
+  }
+  /* off-canvas panel för navigeringen */
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    height: 100vh;
+    background: #fff;
+    z-index: 10000;
+    transition: left var(--flyout-dur) var(--flyout-ease);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    padding: 0;
+  }
+  .navigation.open {
+    left: 0;
+  }
+  /* topp-bar i panelen */
+  .navigation .mobile-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 14px 18px;
+    background: #F1942E;
+    color: #fff;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 2;
+  }
+  .mobile-header .mobile-title {
+    font-size: 18px;
+  }
+  .nav-back, .nav-close {
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .nav-back {
+    visibility: hidden;
+  }
+  /* innehåll i panelen */
+  .navigation nav {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  /* Listor/rader i panelen – vänsterställt */
+  .navigation ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
+    width: 100%;
+  }
+  .navigation li {
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    width: 100%;
+  }
+  .navigation a,
+  .link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 16px;
+    background: none;
+    border: 0;
+    color: #000;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  /* döljer små pilar (desktop) i mobilpanelen */
+  .navigation svg {
+    display: none;
+  }
+  /* visar/döljer panelens “skärmar” */
+  .navigation nav .menu-root {
+    display: none;
+  }
+  .navigation nav .menu-cats {
+    display: none;
+  }
+  .navigation.open nav .menu-root {
+    display: block;
+  }
+  .navigation.show-categories nav .menu-root {
+    display: none;
+  }
+  .navigation.show-categories nav .menu-cats {
+    display: block;
+  }
+  .navigation.show-categories .nav-back {
+    visibility: visible;
+  }
+  /* gömmer hamburgaren när panelen är öppen (visar X för stäng i panelen) */
+  body.nav-open .hamburger-toggle {
+    display: none;
+  }
+  /* döljer desktopens menyinnehåll i mobil */
+  .has-dropdown .dropdown-menu {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 410px) {
+  .navigation {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .navigation {
+    width: 340px;
+  }
+}
+/* ================================
+   FOOTER
+   ================================ */
+.site-footer {
+  background-color: #c8e2ff;
+  padding: 40px 20px 20px;
+  font-family: "Open Sans", sans-serif;
+  /* kolumnrubriker och bastext-länkar */
+  /* Namngivna grid-ytor */
+}
+.site-footer .footer-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr !important;
+  gap: 40px;
+}
+.site-footer .footer-col h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.site-footer .footer-col p,
+.site-footer .footer-col a {
+  font-size: 14px;
+  line-height: 2rem;
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+.site-footer .footer-col a:hover {
+  color: #F1942E;
+}
+.site-footer .footer-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.site-footer .footer-svea,
+.site-footer .footer-trygg {
+  display: block;
+  margin: 10px 0;
+  max-width: 80px;
+}
+.site-footer .footer-company-info p {
+  font-size: 12px;
+  line-height: 1.4rem;
+}
+.site-footer .footer-socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.site-footer .footer-socials .social-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+.site-footer .footer-socials .social-icon:hover {
+  transform: scale(1.1);
+}
+.site-footer .links-col {
+  grid-area: links;
+}
+.site-footer .links-col ul {
+  list-style: none;
+  padding: 0;
+}
+.site-footer .links-col li {
+  margin-bottom: 8px;
+}
+.site-footer .footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+.site-footer .footer-bottom p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.site-footer .footer-bottom a {
+  color: #000;
+  text-decoration: none;
+}
+.site-footer .footer-bottom a:hover {
+  color: #F1942E;
+}
+.site-footer .logo-col {
+  grid-area: logo;
+}
+.site-footer .about-col {
+  grid-area: about;
+}
+.site-footer .contact-col {
+  grid-area: contact;
+}
+
+/* DESKTOP */
+@media (min-width: 1096px) {
+  .site-footer .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-areas: "logo about contact links";
+    gap: 40px;
+    padding: 0 40px;
+    align-items: start;
+  }
+}
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1096px) {
+  .site-footer {
+    padding: 32px 16px 16px;
+  }
+  .site-footer .footer-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-areas: "logo   logo" "about  about" "contact links";
+    gap: 28px;
+    padding: 0 24px;
+    align-items: start;
+  }
+  .site-footer .footer-logo {
+    width: 120px;
+  }
+  .site-footer .footer-svea, .site-footer .footer-trygg {
+    max-width: 90px;
+  }
+  .site-footer .links-col ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 16px;
+  }
+  .site-footer .links-col li {
+    margin-bottom: 0;
+  }
+  .site-footer .footer-col h3 {
+    margin-bottom: 2px;
+  }
+}
+/* MOBIL */
+@media (max-width: 767px) {
+  .site-footer {
+    padding: 28px 12px 12px;
+  }
+  .site-footer .footer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "logo" "about" "contact" "links";
+    gap: 22px;
+    padding: 0 12px;
+    align-items: start;
+  }
+  .site-footer .links-col ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 14px;
+  }
+  .site-footer .links-col li {
+    margin-bottom: 0;
+  }
+  .site-footer .footer-bottom {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+  .site-footer .footer-bottom p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 4px 0;
+  }
+  .site-footer .footer-bottom a {
+    display: inline-block;
+    margin: 4px 6px 0 0;
+  }
+}
+/* SMÅ MOBILER */
+@media (max-width: 360px) {
+  .site-footer .logo-col .footer-logo {
+    width: 120px;
+  }
+  .site-footer .footer-svea, .site-footer .footer-trygg {
+    max-width: 78px;
+  }
+  .site-footer .links-col ul {
+    grid-template-columns: 1fr;
+  }
+}
+/* ================================
+   OVERLAY bakom flyouts
+   ================================ */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--flyout-dur) var(--flyout-ease);
+}
+.login-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ================================
+   FLYOUT PANEL (login/kundvagn)
+   ================================ */
+.login-flyout {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(400px, 100vw);
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform var(--flyout-dur) var(--flyout-ease);
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  /* Header */
+  /* close-knapp */
+  /* innehåll */
+}
+.login-flyout.open {
+  transform: translateX(0);
+}
+.login-flyout.closing {
+  transform: translateX(100%);
+}
+.login-flyout-header {
+  background-color: #f28c28;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+}
+.login-flyout-header i {
+  font-size: 18px;
+}
+.login-flyout .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.login-flyout-content {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+.login-flyout-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+.login-flyout-content label {
+  display: block;
+  font-weight: 600;
+  margin: 1rem 0 0.4rem;
+  font-size: 0.95rem;
+}
+.login-flyout-content input[type=email],
+.login-flyout-content input[type=password] {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.login-flyout-content input[type=checkbox] {
+  margin-right: 0.5rem;
+}
+.login-flyout-content .login-submit {
+  background-color: #002f6c;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.login-flyout-content .login-submit:hover {
+  background-color: #001f4d;
+}
+.login-flyout-content a {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+  text-align: right;
+  display: block;
+  text-decoration: none;
+}
+.login-flyout-content a:hover {
+  text-decoration: underline;
+}
+
+/* Kundvagnsspecifikt innehåll inne i flyouten */
+.cart-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-empty {
+  font-style: italic;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.cart-summary {
+  margin-top: auto;
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-top: 3rem;
+  font-size: 1rem;
+}
+
+.cart-submit {
+  background-color: #ddd;
+  color: #888;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 410px) {
+  .login-flyout {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .login-flyout {
+    width: 340px;
+  }
+}
 
 /*# sourceMappingURL=site.css.map */

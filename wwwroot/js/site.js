@@ -1,4 +1,32 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// site.js - startpunkt för frontend-js
+// laddar modulära init-funktioner som körs när DOM är redo 
 
-// Write your JavaScript code.
+import { initMobileNav } from './nav/mobileNav.js';
+import { initStickyHeaderBelowTopmenu } from './header/stickyOffset.js';
+import { initShrinkLogoOnScroll } from './header/shrinkLogo.js';
+import { initReorderTopmenuForTablet } from './header/reorderTopmenu.js';
+import { initDropdownDelay } from './header/dropdownDelay.js';
+import { initFlyout } from './ui/flyout.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  // header & navigationsbeteenden
+  initMobileNav();
+  initStickyHeaderBelowTopmenu();
+  initShrinkLogoOnScroll();
+  initReorderTopmenuForTablet();
+  initDropdownDelay();
+
+  // Flyouts (login och varukorg)
+  initFlyout({
+    triggerSel: '#loginBtn',
+    panelSel:   '#loginFlyout',
+    overlaySel: '#loginOverlay',
+    closeSel:   '#closeFlyout'
+  });
+  initFlyout({
+    triggerSel: '#cartBtn',
+    panelSel:   '#cartFlyout',
+    overlaySel: '#cartOverlay',
+    closeSel:   '#closeCartFlyout'
+  });
+});

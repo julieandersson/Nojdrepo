@@ -1,0 +1,29 @@
+/* Rubriker */
+h1 {
+  font-size: 30px;
+  text-align: left;
+  padding-bottom: 20px;
+  padding-top: 5px;
+}
+
+h2,
+h3 {
+  padding-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1096px) {
+  h1 { padding-top: 5px; }
+}
+
+@media screen and (max-width: 861px) {
+  h3 {
+    font-size: 0.9rem;
+    margin-bottom: -10px;
+  }
+}

@@ -3,46 +3,319 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Nojdrepo</title>
+    <!-- Dynamisk sidtitel -->
+    <title>@ViewData["Title"]</title>
+    <!--Ikoner från font-awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Nojdrepo.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="@ViewBag.BodyClass">
+
+    <!--TOPMENY, överst på sidan i desktop -->
+    <!-- OBS STATISKT EXEMPEL, ERSÄTTS MED DYNAMISK DATA FRÅN DATABASEN -->
+        <div class="topmenu">
+        <div class="topmenu-inner">
+            <div class="menu-links">
+            <a href="#">NYHETER</a>
+            <a asp-controller="About" asp-action="Index">OM OSS</a>
+            <a href="#">KONTAKTA OSS</a>
+            <a asp-controller="Contact" asp-action="Index">HJÄLP</a>
+            <a href="#" class="show-tablet"><i class="fa-solid fa-phone"></i> 0171-46 80 00</a>
+            <a href="#" class="show-tablet"><i class="fa-solid fa-envelope"></i> info@nojd.com</a>
+            <a href="#" class="show-tablet show-mobile">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                </svg>
+                Fraktfritt vid ordervärde överstigande 2000:-
+            </a>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER (logotyp + huvudmeny) -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Nojdrepo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <div class="logo-wrapper">
+            <div class="content-wrapper">
+                <div class="logo">
+                    <a href="~/">
+                        <img src="~/images/logo_nojd.svg" alt="Nöjd Logo">
+                    </a>
                 </div>
             </div>
-        </nav>
+        </div>
+
+        <!-- HUVUDMENY (desktop/tablet) -->
+        <div class="mainmenu">
+            <div class="mainmenu-inner">
+                <!-- SÖKFORMULÄR -->
+                <div class="search-wrapper">
+                <form class="search-form">
+                    <input type="text" placeholder="Letar du efter något? Sök produkt eller artikelnummer!">
+                    <button type="submit" class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                </div>
+                <!-- Knappar för kontakt, logga in och varukorg -->
+                <!-- OBS STATISKT EXEMPEL, ERSÄTTS MED DYNAMISK DATA FRÅN DATABASEN -->
+                <div class="button-group">
+                    <a href="#" class="menu-button" id="contactBtn">
+                        <i class="fa-regular fa-comment"></i><span>Kontakta oss</span>
+                    </a>
+                    <a class="menu-button" id="loginBtn">
+                        <i class="fa-regular fa-user"></i>
+                        <span>Logga in</span>
+                    </a>
+                    <a class="menu-button" id="cartBtn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- HAMBURGER-MENY (för tablet/mobile) -->
+        <button class="hamburger-toggle" id="hamburgerBtn" aria-label="Öppna meny">
+            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H15M3 6H21M3 18H21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <!-- MOBILNAVIGATION (off-canvas) -->
+        <div class="navigation" id="mobileNav">
+            <!-- Mobil topp (titel + stängknappar) -->
+            <div class="mobile-header">
+                <button type="button" class="nav-back js-back" aria-label="Tillbaka">←</button>
+                <span class="mobile-title" id="mobileTitle">Meny</span>
+                <button type="button" class="nav-close" id="closeNav" aria-label="Stäng">✕</button>
+            </div>
+
+            <!-- NAVIGATIONSMENY -->
+            <!-- OBS STATISKT EXEMPEL, ERSÄTTS MED DYNAMISK DATA FRÅN DATABASEN -->
+            <nav>
+                <!-- ROT: första vyn i mobilen -->
+                <ul class="menu-root" id="menuRoot">
+                    <li><button type="button" class="link-row js-open-products">Produktkategorier <span class="arrow">→</span></button></li>
+                    <li><a href="#" class="link-row">Nyheter <span class="arrow">→</span></a></li>
+                    <li><a asp-controller="About" asp-action="Index" class="link-row">Om oss <span class="arrow">→</span></a></li>
+                    <li><a asp-controller="Contact" asp-action="Index" class="link-row">Hjälp <span class="arrow">→</span></a></li>
+                    <li><a href="#" class="link-row">Kontakta oss <span class="arrow">→</span></a></li>
+                </ul>
+
+                <!-- PRODUKTKATEGORIER, dynamiseras senare) -->
+                <ul class="menu-cats">
+                <li class="has-dropdown">
+                    <a href="#">WELL
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    </a>
+                    @Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">PLAST
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    </a>
+                    @Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">E-HANDEL
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    </a>
+                    @Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">STÖTDÄMPNING 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </a>@Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">TEJP 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg></a>@Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">PALLEMBALLAGE 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg></a>@Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">TRÄEMBALLAGE 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg></a>@Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">MASKINER 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg></a>@Html.Partial("_DropdownMenuPartial")
+                </li>
+
+                <li class="has-dropdown">
+                    <a href="#">ÖVRIGT 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg></a>@Html.Partial("_DropdownMenuPartial")
+                </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- OVERLAY för mobilmenyn -->
+        <div id="navOverlay" class="login-overlay"></div>  
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <!-- Sidans huvudinnehåll -->
+    <div class="page">
+        <main>
             @RenderBody()
         </main>
+    
+    <!-- FOOTER -->
+    <!-- OBS STATISKT EXEMPEL, ERSÄTTS MED DYNAMISK DATA FRÅN DATABASEN -->
+    <footer class="site-footer">
+    <div class="footer-container">
+        <!-- LOGO-KOLUMN -->
+        <div class="footer-col logo-col">
+            <img src="/images/logo_nojd.svg" alt="Nöjd Logo" class="footer-logo">
+            <img src="/images/rgb_ekonomi_large.png" alt="Svea Ekonomi" class="footer-svea">
+            <img src="/images/tryggehandel.svg" alt="Trygg e-handel" class="footer-trygg">
+
+            <div class="footer-company-info">
+                <p>© CHRISTER NÖJD AB</p>
+                <p>Hantverksvägen 5, 746 40 Bålsta</p>
+                <p>0171-46 80 00</p>
+                <p>ORGNR. 556201-0685</p>
+            </div>
+        </div>
+
+        <!-- OM OSS-KOLUMN -->
+        <div class="footer-col about-col">
+            <h3>Helhetslösningar inom emballage</h3>
+            <p>
+                Nöjd AB erbjuder förpacknings- och emballagelösningar, främst inom transportemballage. 
+                Vi är totalleverantör och bistår i hela förpackningskedjan från förbruknings-material via maskiner 
+                och service till lagerhållning. Idag är Nöjd AB ett av landets ledande fristående grossistföretag inom 
+                transportemballage och omsätter över 500 miljoner kronor.
+            </p>
+        </div>
+
+        <!-- KONTAKT-KOLUMN -->
+        <div class="footer-col contact-col">
+            <h3>Kontakta oss</h3>
+            <p><i class="fa-solid fa-phone"></i> 0171-46 80 00</p>
+            <p><i class="fa-solid fa-envelope"></i> info@nojd.com</p>
+            <p><i class="fa-solid fa-envelope"></i> order@nojd.com</p>
+            <p><i class="fa-solid fa-location-dot"></i> Hantverksvägen 5, 746 40 Bålsta</p> <br/>
+
+            <h3>Följ oss på sociala medier</h3>
+            <div class="footer-socials">
+                <a href="#">
+                <img src="/images/Facebook_icon.svg.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="#">
+                <img src="/images/Instagram-Icon.png" alt="Instagram" class="social-icon">
+                </a>
+            </div>
+        </div>
+
+        <!-- SNABBLÄNKAR-KOLUMN -->
+        <div class="footer-col links-col">
+            <h3>Snabblänkar</h3>
+            <ul>
+                <li><a href="#">WELL</a></li>
+                <li><a href="#">PLAST</a></li>
+                <li><a href="#">E-HANDEL</a></li>
+                <li><a href="#">STÖTDÄMPNING</a></li>
+                <li><a href="#">TEJP</a></li>
+                <li><a href="#">PALLEMBALLAGE</a></li>
+                <li><a href="#">TRÄEMBALLAGE</a></li>
+                <li><a href="#">MASKINER</a></li>
+                <li><a href="#">ÖVRIGT</a></li>
+            </ul>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Nojdrepo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <!-- KÖPVILLKOR nederst -->
+        <div class="footer-bottom">
+            <p><strong>Köpvillkor</strong></p>
+            <p>
+            <a href="#">Köp & Leverans</a> | 
+            <a href="#">Allmänna villkor</a> | 
+            <a href="#">Ångerrätt & Returer</a>
+            </p>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- LOGIN FLYOUT + overlay -->
+    <div id="loginOverlay" class="login-overlay"></div>
+    <div id="loginFlyout" class="login-flyout">
+        <div class="login-flyout-header">
+            <i class="fa-regular fa-user"></i>
+            Logga in
+            <button id="closeFlyout" class="close-btn" aria-label="Stäng">✕</button>
+        </div>
+        <div class="login-flyout-content">
+            <p>
+                Logga in för att se dina unika kundspecifika uppgifter.
+                Är du inte avtalskund kan du ändå handla direkt i butiken
+                och registreras som kund vid utcheckning.
+            </p>
+            <form method="post" action="/Login/Index">
+                <label for="email">E-postadress:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Lösenord:</label>
+                <input type="password" id="password" name="password" required>
+
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe" style="display: inline;">Kom ihåg mig</label>
+
+                <button type="button" onclick="location.href='/mina-sidor'" class="login-submit">
+                    Logga in
+                </button>
+            </form>
+            <a href="#">Har du glömt ditt lösenord?</a>
+        </div>
+    </div>
+
+
+    <!-- CART FLYOUT + overlay -->
+    <div id="cartOverlay" class="login-overlay"></div>
+    <div id="cartFlyout" class="login-flyout">
+        <div class="login-flyout-header">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Varukorg
+            <button id="closeCartFlyout" class="close-btn" aria-label="Stäng">✕</button>
+        </div>
+        <div class="login-flyout-content cart-content">
+            <p class="cart-empty">Din varukorg är tom</p>
+
+            <div class="cart-summary">
+                <div class="cart-total-row">
+                    <span>Totalt</span>
+                    <span>0,00 kr</span>
+                </div>
+                <button type="button" onclick="location.href='/varukorg'" class="cart-submit" >Till varukorgen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <!-- site.js = entry point, importerar övriga moduler -->
+    <script type="module" src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    </div>
 </body>
 </html>

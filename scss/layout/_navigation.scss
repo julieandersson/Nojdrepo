@@ -1,0 +1,319 @@
+/* ================================
+   NAVIGATION + MEGAMENY
+   ================================ */
+$bp-desktop: 1097px;
+$bp-xl: 1475px;
+$bp-lg: 1400px;
+$bp-md: 1316px;
+$bp-sm: 1240px;
+$bp-xs: 1159px;
+$bp-xxs: 1096px;
+$bp-xxxs: 410px;
+$bp-xxxxs: 380px;
+
+.navigation {
+  background-color: #fff;
+  width: 100%;
+  padding: 7px 0;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  align-items: center;
+  justify-items: center;
+
+  nav {
+    max-width: 1500px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  /* Desktop default: visa kategorier, dölj mobilvyer */
+  .mobile-header { display: none; }
+  nav .menu-root  { display: none; } // rotmenyn döljs på desktop
+  nav .menu-cats  { display: flex; } // kategorilista är synlig på desktop
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+
+    &:hover { color: #F1942E; }
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+}
+
+/* Hoverfärg för .link-row-knappar */
+.link-row:hover { color: #F1942E; }
+
+/* Dropdown-meny (3 kolumner) */
+.has-dropdown {
+  position: static;
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 30px 40px;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    gap: 60px;
+    align-items: start;
+    box-shadow: none;
+
+    /* visning + animation */
+    margin-top: 3px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease, visibility .25s ease, transform .25s ease;
+    transform: translateY(6px);
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+      box-shadow:
+        0 -6px #fff,
+        0 4px 2px -2px rgba(0,0,0,0.1),
+       -2px 0 2px -2px rgba(0,0,0,0.1),
+        2px 0 2px -2px rgba(0,0,0,0.1);
+    }
+
+    /* gemensam list- och länk-stil i kolumnerna */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      display: inline-block;
+      padding: 2px 0;
+
+      &:hover { color: #F1942E; }
+    }
+
+    /* vänsterkolumnens rubrik */
+    .dropdown-left p {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+/* Hamburger-knapp (synlig i mobil) */
+.hamburger-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* DESKTOP: visar bara produktkategorierna, döljer mobilhuvud + rotmeny */
+@media (min-width: $bp-desktop) {
+  .navigation .mobile-header,
+  .navigation .menu-root { display: none; }
+
+  .navigation > nav > ul.menu-cats { display: flex; }
+}
+
+@media screen and (max-width: $bp-xl) {
+  .navigation ul {
+    gap: 60px;
+  }
+
+  .navigation a {
+    font-size: 14px;
+  }
+
+  .dropdown-menu ul{
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: $bp-lg) {
+  .navigation ul {
+    gap: 50px;
+  }
+
+  .dropdown-menu ul{
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: $bp-md) {
+  .menu-links a {
+    font-size: 12px;
+  }
+  .navigation ul {
+    gap: 40px;
+  }
+  .dropdown-menu ul{
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: $bp-sm) {
+  .navigation ul {
+    gap: 30px;
+  }
+  .dropdown-menu ul{
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: $bp-xs) {
+  .navigation ul {
+    gap: 23px;
+  }
+  .dropdown-menu ul{
+    gap: 5px;
+  }
+}
+
+/* MOBIL / TABLET: off-canvas navigation, hamburgare, panelbeteende */
+@media screen and (max-width: $bp-xxs) {
+  /* visar hamburgarikonen i mobil */
+  .hamburger-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 1001;
+
+    svg {
+      width: 45px;
+      height: 45px;
+      stroke: #003978;
+    }
+  }
+
+  /* off-canvas panel för navigeringen */
+  .navigation{
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    height: 100vh;
+    background: #fff;
+    z-index: 10000;
+    transition: left var(--flyout-dur) var(--flyout-ease);
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    overflow-y: auto;
+    padding: 0;
+  }
+  .navigation.open{ left: 0; }
+
+  /* topp-bar i panelen */
+  .navigation .mobile-header{
+    position: sticky; top: 0;
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding: 14px 18px;
+    background: #F1942E; color: #fff; font-weight: 700;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    z-index: 2;
+  }
+  .mobile-header .mobile-title{ font-size: 18px; }
+  .nav-back, .nav-close{ background: none; border: 0; color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
+  .nav-back{ visibility: hidden; }
+
+  /* innehåll i panelen */
+  .navigation nav{
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Listor/rader i panelen – vänsterställt */
+  .navigation ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
+    width: 100%;
+  }
+  .navigation li{
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    width: 100%;
+  }
+  .navigation a,
+  .link-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 16px;
+    background: none;
+    border: 0;
+    color: #000;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  /* döljer små pilar (desktop) i mobilpanelen */
+  .navigation svg{ display: none; }
+
+  /* visar/döljer panelens “skärmar” */
+  .navigation nav .menu-root{ display: none; }
+  .navigation nav .menu-cats{ display: none; }
+
+  .navigation.open nav .menu-root{ display: block; }
+  .navigation.show-categories nav .menu-root{ display: none; }
+  .navigation.show-categories nav .menu-cats{ display: block; }
+  .navigation.show-categories .nav-back{ visibility: visible; }
+
+  /* gömmer hamburgaren när panelen är öppen (visar X för stäng i panelen) */
+  body.nav-open .hamburger-toggle{ display: none; }
+
+  /* döljer desktopens menyinnehåll i mobil */
+  .has-dropdown .dropdown-menu{ display: none !important; }
+}
+
+@media screen and (max-width: $bp-xxxs) {
+  .navigation {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: $bp-xxxxs) {
+  .navigation {
+    width: 340px;
+  }
+}

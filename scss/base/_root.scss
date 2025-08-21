@@ -1,0 +1,14 @@
+/* Design tokens som CSS-variabler */
+:root {
+  --flyout-dur: 300ms; /* standard-duration för flyout/overlay */
+  --flyout-ease: ease-in-out; /* standard-easing för flyout/overlay */
+}
+
+/* Grundinställningar */
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  line-height: 2em;
+  min-height: 100vh; /* fyller viewport-höjd */
+  background-color: #f3faff; /* ljusblå bakgrund */
+}

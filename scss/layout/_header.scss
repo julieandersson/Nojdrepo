@@ -1,0 +1,340 @@
+/* ================================
+   HEADER: logo, topmenu, mainmenu
+   ================================ */
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: sticky; // mot viewportens topp
+  z-index: 1500; // över topmenu/megamenu
+  top: 0;
+  left: 0;
+}
+
+.logo-wrapper { position: relative; }
+
+// loggan ligger “ovanpå” och krymper via .shrink
+.logo {
+  position: fixed;
+  top: -1px;
+  padding-left: 40px; // bas-offset
+
+  img {
+    width: 102px;
+    transition: width 0.3s ease, transform 0.3s ease;
+  }
+
+  &.shrink img { width: 82px; }
+}
+
+// innehåll bredvid loggan
+.content-wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Topmenu (mörkblå listen) */
+.topmenu {
+  background-color: #003978;
+  position: relative;
+  top: 0; left: 0; width: 100%;
+  z-index: 1000; // under header men över innehåll
+
+  .topmenu-inner {
+    max-width: 1500px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    padding-left: 170px; // plats för logga
+    width: 100%;
+
+    .menu-links {
+      display: flex;
+      gap: 50px;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 500;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+  }
+}
+
+/* Mainmenu (ljusblå raden) */
+.mainmenu {
+  background-color: #c8e2ff;
+  width: 100%;
+  height: 80px; // fast höjd
+  padding: 20px 0;
+
+  .mainmenu-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; // sök i mitten, knappar höger
+    gap: 20px;
+    padding: 0 40px;
+    padding-left: 170px; // plats för logga
+  }
+}
+
+/* Sökfält */
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.3s ease, max-width 0.3s ease;
+
+  &.expand-left {
+    margin-left: -25px;
+    max-width: calc(100% + 25px);
+  }
+
+  .search-form {
+    width: 100%;
+    display: flex;
+    position: relative;
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 2px;
+      box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #7d7d7d;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Knappar (kontakta/logga in/kundvagn) */
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.menu-button {
+  color: #fff;
+  text-decoration: none;
+  padding: 3px 25px;
+  border-radius: 3px;
+  font-weight: 500;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Individuella färger */
+#contactBtn,
+#loginBtn {
+  background-color: #003978;
+
+  &:hover { background-color: #002a5c; }
+}
+
+#cartBtn {
+  background-color: #F1942E;
+
+  &:hover { background-color: #e98c1b; }
+}
+
+@media screen and (max-width: 1316px) {
+    .topmenu-inner .menu-links {
+    gap: 30px!important;
+   }
+    .menu-links a {
+    font-size: 12px!important;
+   }
+}
+
+/* HEADER/TOPMENU – mobil & tablet-layouter */
+@media screen and (max-width: 1096px) {
+  /* logga & headerlayout */
+  .logo{ padding-left: 90px; position: absolute; }
+  .logo img{ width: 80px; }
+  header{ position: sticky; display: flex; flex-direction: column; top: 0; }
+
+  .topmenu { position: relative!important; z-index: 1000!important; }
+
+  .topmenu-inner{ padding: 5px 20px!important; justify-content: center!important; }
+  .topmenu-inner .menu-links{ gap: 40px!important; justify-content: center!important; text-align: center!important; }
+
+  .mainmenu-inner{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+  }
+  .mainmenu{ height: 145px; }
+
+  .search-wrapper{ order: 2; width: 100%; padding-top: 15px; }
+  .button-group{ order: 1; align-self: flex-end; flex-wrap: wrap; gap: 10px; }
+  .search-form{ width: 100%; }
+}
+
+@media screen and (max-width: 442px) {
+  .search-form {
+    padding-top: 4px;
+  }
+}
+
+@media screen and (max-width: 981px) {
+    .topmenu-inner .menu-links {
+        gap: 20px!important;
+        font-size: 13px!important;
+    }
+}
+
+@media screen and (max-width: 831px) {
+    .topmenu-inner .menu-links {
+        gap: 7px!important;
+        font-size: 11px!important;
+    }
+}
+
+@media screen and (max-width: 861px) {
+
+    .topmenu-inner {
+    justify-content: flex-start!important;  /* trycker allt till vänster */
+    padding-left: 20px!important;
+  }
+
+  .topmenu-inner .menu-links {
+    justify-content: flex-start!important; /* länkarna vänsterställs */
+    gap: 50px!important;
+  }
+
+  .topmenu-inner .menu-links a {
+    display: none!important;
+  }
+
+  .topmenu-inner .menu-links a.show-tablet {
+    display: flex!important;
+    align-items: center!important;
+    gap: 5px!important;
+    text-decoration: none!important;
+  }
+}
+
+@media screen and (max-width: 622px) {
+    .topmenu-inner .menu-links {
+    gap: 30px!important;
+  }
+}
+
+@media screen and (max-width: 580px) {
+
+  .topmenu-inner .menu-links {
+    gap: 20px!important;
+  }
+  .topmenu-inner .menu-links a.show-tablet {
+    font-size: 12px!important;
+  }
+}
+
+@media screen and (max-width: 553px) {
+  .topmenu-inner .menu-links a.show-tablet { display: none!important; }
+
+  /* visar endast mobil-länken */
+  .topmenu-inner .menu-links a.show-mobile { display: flex!important; }
+}
+
+@media screen and (max-width: 610px) {
+
+  .search-wrapper {
+    padding-top: 27px;
+  }
+
+  .search-form input {
+    font-size: 15px!important;
+  }
+
+  .logo {
+    padding-left: 85px;
+  }
+
+  .button-group {
+    gap: 30px;
+  }
+
+  .button-group .menu-button {
+    background: none; /* ingen bakgrund */
+    box-shadow: none; /* ingen skugga */
+    padding: 0;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-group .menu-button span {
+    display: none;
+  }
+
+  #contactBtn,
+  #loginBtn,
+  #cartBtn {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .button-group .menu-button {
+    color: inherit !important;
+  }
+
+  #contactBtn i,
+  #loginBtn i { color: #003978 !important; }
+
+  #cartBtn i { color: #F1942E !important; }
+
+  #contactBtn:hover i,
+  #loginBtn:hover i { color: #002a5c !important; }
+
+  #cartBtn:hover i { color: #e98c1b !important; }
+}
+
+@media screen and (max-width: 442px) {
+  .button-group .menu-button {
+    font-size: 22px;
+  }
+}
