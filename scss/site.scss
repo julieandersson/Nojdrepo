@@ -12,3 +12,8 @@
 
 @use 'components/overlay';
 @use 'components/flyouts';
+@use 'components/subcategories';
+@use 'components/products';
+@use "components/breadcrumbs";
+
+@use 'pages/categories';

@@ -1120,5 +1120,312 @@ header {
     width: 340px;
   }
 }
+/* GRID-LAYOUT FÖR UNDERKATEGORIER */
+.subcategory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  /* Brytpunkter */
+}
+@media screen and (max-width: 1270px) {
+  .subcategory-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 830px) {
+  .subcategory-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+@media screen and (max-width: 535px) {
+  .subcategory-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Kort: bild vänster, text höger */
+.subcategory-card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+  /* titel till höger om bilden */
+  /* hover/fokus-effekt */
+}
+.subcategory-card a {
+  display: flex; /* radlayout */
+  align-items: center;
+  gap: 30px;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+.subcategory-card img {
+  width: 82px;
+  height: 82px;
+  flex: 0 0 82px;
+  object-fit: contain;
+  padding: 0;
+}
+.subcategory-card .subcategory-title {
+  color: #111;
+  padding: 0;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+.subcategory-card:hover, .subcategory-card:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 1270px) {
+  .subcategory-card a {
+    gap: 14px;
+    padding: 14px 16px;
+  }
+  .subcategory-card img {
+    width: 60px;
+    height: 60px;
+    flex-basis: 60px;
+  }
+  .subcategory-card .subcategory-title {
+    font-size: 16px;
+  }
+}
+@media (max-width: 535px) {
+  .subcategory-card a {
+    gap: 12px;
+    padding: 12px 14px;
+  }
+  .subcategory-card img {
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
+  }
+  .subcategory-card .subcategory-title {
+    font-size: 15px;
+  }
+}
+
+/* Produktgrid (sida: Categories/Index) */
+.product-grid-index {
+  padding: 20px 0 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1169px) {
+  .product-grid-index {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 870px) {
+  .product-grid-index {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 574px) {
+  .product-grid-index {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Produktgrid (sida: Categories/Products) */
+.product-grid {
+  padding: 0 0 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Produktkort */
+.product-card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* pris (övre högra hörnet) */
+  /* Actions */
+}
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.product-card h3 {
+  font-size: 18px;
+  margin: 5px 0 0;
+}
+.product-card p {
+  margin: 1px 0;
+  font-size: 14px;
+}
+.product-card .in-stock {
+  color: green;
+  font-weight: bold;
+  margin: 0;
+  font-size: 12px;
+}
+.product-card .shipping {
+  font-weight: bold;
+  margin: 0;
+  font-size: 12px;
+}
+.product-card .price {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #8dd291;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  line-height: 1.4;
+}
+.product-card .price span {
+  font-size: 15px;
+  font-weight: bold;
+}
+.product-card .sale {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background: #dc1616;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  line-height: 1.4;
+}
+.product-card .variant-label {
+  margin: 6px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+}
+.product-card .variant-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+.product-card .variant-select:focus {
+  outline: none;
+  border-color: #999;
+}
+@media (max-width: 735px) {
+  .product-card .variant-label {
+    font-size: 12px;
+  }
+  .product-card .variant-select {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+}
+.product-card .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+.product-card .actions input {
+  width: 60px;
+  padding: 9px;
+  font-size: 16px;
+}
+.product-card .actions .buy-btn {
+  background-color: #F1942E;
+  border: none;
+  color: #fff;
+  padding: 5px 15px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+.product-card .actions .buy-btn:hover {
+  background: #e98c1b;
+}
+
+/* breadbrumbs gemensamt för hela siten */
+.breadcrumbs {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.breadcrumbs a {
+  text-decoration: none;
+  color: #e98c1b;
+}
+.breadcrumbs a:hover, .breadcrumbs a:focus {
+  text-decoration: underline;
+}
+
+/* KATEGORI-SIDA */
+.fullwidth-section {
+  background: #eaeef3;
+  margin-inline: calc(50% - 50vw);
+  margin-block: 30px;
+  overflow: hidden;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1500px;
+  padding: 20px 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.info-image img {
+  max-width: 300px;
+  height: auto;
+}
+
+.info-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* staplar rubrik, text, knapp */
+  justify-content: space-between;
+}
+
+.cta-btn {
+  align-self: flex-end; /* knappen till höger */
+  background: #F1942E;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.cta-btn:hover {
+  background: #e98c1b;
+}
 
 /*# sourceMappingURL=site.css.map */

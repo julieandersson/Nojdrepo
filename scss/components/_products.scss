@@ -1,0 +1,132 @@
+/* Produktgrid (sida: Categories/Index) */
+.product-grid-index {
+  padding: 20px 0 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  
+  // 3 kolumner
+  @media (max-width: 1169px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // 2 kolumner
+  @media (max-width: 870px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // 1 kolumn
+  @media (max-width: 574px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Produktgrid (sida: Categories/Products) */
+.product-grid {
+  padding: 0 0 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Produktkort */
+.product-card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  padding: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  h3 { font-size: 18px; margin: 5px 0 0; }
+  p  { margin: 1px 0; font-size: 14px; }
+
+  .in-stock   { color: green; font-weight: bold; margin: 0; font-size: 12px; }
+  .shipping   { font-weight: bold; margin: 0; font-size: 12px; }
+
+  /* pris (övre högra hörnet) */
+  .price {
+    position: absolute; top: 10px; right: 10px;
+    background: #8dd291; color: #fff; font-weight: 600;
+    padding: 6px 12px; border-radius: 4px; font-size: 13px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    display: inline-block; line-height: 1.4;
+
+    span { font-size: 15px; font-weight: bold; }
+  }
+
+  .sale {
+    position: absolute; top: 50px; right: 10px;
+    background: #dc1616; color: #fff; font-weight: 600;
+    padding: 6px 12px; border-radius: 4px; font-size: 13px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    display: inline-block; line-height: 1.4;
+  }
+
+  .variant-label {
+    margin: 6px 0 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+  }
+
+  .variant-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+
+    &:focus {
+      outline: none;
+      border-color: #999;
+    }
+  }
+
+  @media (max-width: 735px) {
+    .variant-label  { font-size: 12px; }
+    .variant-select { padding: 7px 10px; font-size: 13px; }
+  }
+
+  /* Actions */
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+
+    input {
+      width: 60px;
+      padding: 9px;
+      font-size: 16px;
+    }
+
+    .buy-btn {
+      background-color: #F1942E;
+      border: none;
+      color: #fff;
+      padding: 5px 15px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      font-size: 14px;
+
+      &:hover { background: #e98c1b; }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+/* breadbrumbs gemensamt för hela siten */
+
+.breadcrumbs {
+  font-size: 12px;
+  margin-bottom: 10px;
+
+  a {
+    text-decoration: none;
+    color: #e98c1b;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

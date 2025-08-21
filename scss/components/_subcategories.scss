@@ -1,0 +1,76 @@
+/* GRID-LAYOUT FÖR UNDERKATEGORIER */
+.subcategory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  /* Brytpunkter */
+  @media screen and (max-width: 1270px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 830px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  @media screen and (max-width: 535px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Kort: bild vänster, text höger */
+.subcategory-card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease;
+  min-width: 0;
+
+  a {
+    display: flex; /* radlayout */
+    align-items: center;
+    gap: 30px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+  }
+
+  img {
+    width: 82px;
+    height: 82px;
+    flex: 0 0 82px;
+    object-fit: contain;
+    padding: 0;
+  }
+
+  /* titel till höger om bilden */
+  .subcategory-title {
+    color: #111;
+    padding: 0;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+  }
+
+  /* hover/fokus-effekt */
+  &:hover,
+  &:focus-within {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  }
+
+  @media (max-width: 1270px) {
+    a { gap: 14px; padding: 14px 16px; }
+    img { width: 60px; height: 60px; flex-basis: 60px; }
+    .subcategory-title { font-size: 16px; }
+  }
+
+  @media (max-width: 535px) {
+    a { gap: 12px; padding: 12px 14px; }
+    img { width: 54px; height: 54px; flex-basis: 54px; }
+    .subcategory-title { font-size: 15px; }
+  }
+}
