@@ -30,15 +30,14 @@ body {
 
 /* Rubriker */
 h1 {
-  font-size: 30px;
+  font-size: 1.8rem;
   text-align: left;
   padding-bottom: 20px;
   padding-top: 5px;
 }
 
-h2,
-h3 {
-  padding-bottom: 15px;
+h2 {
+  font-size: 1.4rem;
 }
 
 h3 {
@@ -47,14 +46,44 @@ h3 {
   font-weight: 600;
 }
 
+h2,
+h3 {
+  padding-bottom: 15px;
+}
+
 @media screen and (max-width: 1096px) {
   h1 {
     padding-top: 5px;
+    font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  h3 {
+    font-size: 1rem;
   }
 }
 @media screen and (max-width: 861px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
   h3 {
     font-size: 0.9rem;
+    margin-bottom: -10px;
+  }
+}
+@media screen and (max-width: 553px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  h3 {
+    font-size: 0.8rem;
     margin-bottom: -10px;
   }
 }
@@ -1276,7 +1305,6 @@ header {
   object-fit: contain;
 }
 .product-card h3 {
-  font-size: 18px;
   margin: 5px 0 0;
 }
 .product-card p {
@@ -1431,7 +1459,6 @@ header {
 .product-grid.is-list .product-card h3 {
   grid-column: 3;
   grid-row: 1;
-  font-size: 20px;
   margin-bottom: -20px;
 }
 .product-grid.is-list .product-card > p:nth-of-type(1) { /* Mått */
@@ -1876,7 +1903,9 @@ header {
   }
   .products-toolbar .searchbar {
     order: 2;
+    flex: 1 1 auto;
     min-width: 0;
+    max-width: none;
   }
   .products-toolbar .toolbar-right {
     order: 2;
@@ -2015,9 +2044,6 @@ header {
     width: 100%;
     max-width: 100%;
     height: auto;
-  }
-  h3 {
-    font-size: 0.85rem;
   }
   main {
     margin: -25px auto;
@@ -2680,6 +2706,635 @@ header {
 }
 .cta-btn:hover {
   background: #e98c1b;
+}
+
+/* VARUKORG – Tabell */
+.checkout-title {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.cart-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: -15px;
+}
+
+.cart-item {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 7px 20px;
+  /* bild | info | styck | pris/st | pris/fp | summa */
+  display: grid;
+  grid-template-columns: 80px 1fr 7ch 10ch 12ch 16ch;
+  grid-template-rows: auto auto auto;
+  column-gap: 28px;
+  row-gap: 2px;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+/* bild + info */
+.item-media {
+  grid-column: 1;
+  grid-row: 1/span 3;
+  margin: 0;
+}
+.item-media img {
+  width: 100%;
+  height: auto;
+  max-width: 260px;
+  display: block;
+  border-radius: 6px;
+}
+
+.item-info {
+  grid-column: 2;
+  grid-row: 1/span 2;
+}
+
+.item-spec,
+.item-sku {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* kolumnhuvuden (rad 1) */
+.col-head {
+  font-weight: 700;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.head-styck {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.head-prisst {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.head-prisfp {
+  grid-column: 5;
+  grid-row: 1;
+}
+
+.head-summa {
+  grid-column: 6;
+  grid-row: 1;
+}
+
+/* värden (rad 2) */
+.col-val {
+  justify-self: end;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.val-styck {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.val-prisst {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.val-prisfp {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+.val-summa {
+  grid-column: 6;
+  grid-row: 2;
+  font-weight: 800;
+  font-size: 20px;
+}
+.val-summa span {
+  display: inline-block;
+}
+
+/* Antal + ta bort (nederkant) */
+.cart-qty {
+  margin-top: 10px;
+  grid-column: 2;
+  grid-row: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-qty__label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cart-qty__input {
+  width: 56px;
+  height: 32px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0 6px;
+  text-align: center;
+  background: #f4f5f6;
+  outline: none;
+}
+
+.remove {
+  grid-column: 6;
+  grid-row: 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 0;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.remove i {
+  font-size: 14px;
+}
+
+.cart-item + .cart-item {
+  margin-top: 10px;
+}
+
+@media (max-width: 1058px) {
+  .cart-item {
+    /* bild | info | styck | pris/st | pris/fp | summa-kolumn */
+    grid-template-columns: 80px 1fr 1ch 11ch 11ch 11ch;
+    grid-template-rows: auto auto auto auto;
+    column-gap: 30px;
+    font-size: 15px;
+    padding: 15px;
+  }
+  .item-title {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  .item-spec, .item-sku, .col-val {
+    font-size: 15px;
+  }
+  /* rubriker som syns i toppen */
+  .head-styck {
+    grid-column: 4;
+    grid-row: 1;
+  }
+  .head-prisst {
+    grid-column: 5;
+    grid-row: 1;
+  }
+  .head-prisfp {
+    grid-column: 6;
+    grid-row: 1;
+  }
+  /* Döljer topp-rubriken "Summa" */
+  .head-summa {
+    display: none;
+  }
+  /* Värden rad 2 (oförändrat) */
+  .val-styck {
+    grid-column: 4;
+    grid-row: 2;
+  }
+  .val-prisst {
+    grid-column: 5;
+    grid-row: 2;
+  }
+  .val-prisfp {
+    grid-column: 6;
+    grid-row: 2;
+  }
+  /* Lägger till ny "Summa", placeras längst ner till höger */
+  .val-summa {
+    grid-column: 6;
+    grid-row: 3; /* nedersta raden */
+    justify-self: end;
+    text-align: right;
+    font-size: 18px;
+    margin-bottom: -10px;
+  }
+  .val-summa::before {
+    content: "Summa";
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  /* Antal – placeras nere till vänster, utan label */
+  .cart-qty {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: start;
+    align-items: center;
+    margin-top: -20px;
+  }
+  .cart-qty__label {
+    display: none;
+  }
+  .cart-qty__input {
+    width: 56px;
+    height: 32px;
+    font-size: 14px;
+  }
+  /* Ta bort – placeras under antal */
+  .remove {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: start;
+    margin-top: -13px;
+  }
+}
+@media (max-width: 907px) {
+  .item-title {
+    font-size: 14px;
+  }
+  .item-info p {
+    font-size: 13px;
+  }
+  .cart-item, .col-val {
+    font-size: 13px;
+  }
+  .remove, .remove i {
+    font-size: 12px;
+  }
+  .val-summa {
+    font-size: 16px;
+  }
+}
+@media (max-width: 827px) {
+  .cart-item {
+    column-gap: 10px;
+  }
+}
+/* två kolumner */
+@media (max-width: 727px) {
+  .cart-item {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    column-gap: 40px;
+  }
+  .item-media {
+    grid-column: 1;
+    grid-row: 1/span 3;
+  }
+  .item-info {
+    grid-column: 2;
+    grid-row: 1/span 2;
+  }
+  .item-title {
+    font-size: 14px;
+    margin-bottom: -10px;
+    font-weight: 800;
+  }
+  /* döljer topphuvuden, visar istället etiketter via ::before framför värden */
+  .col-head {
+    display: none;
+  }
+  .val-styck {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: start;
+    font-size: 13px;
+  }
+  .val-prisst {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: start;
+    font-size: 13px;
+  }
+  .val-prisfp {
+    grid-column: 2;
+    grid-row: 5;
+    justify-self: start;
+    font-size: 13px;
+  }
+  .val-styck::before,
+  .val-prisst::before,
+  .val-prisfp::before {
+    display: inline-block;
+    min-width: 90px;
+    font-weight: 800;
+    margin-right: 10px;
+    color: #222;
+    font-size: 13px;
+  }
+  .val-styck::before {
+    content: "Styck";
+  }
+  .val-prisst::before {
+    content: "Pris/st";
+  }
+  .val-prisfp::before {
+    content: "Pris/fp";
+  }
+  .val-summa {
+    grid-column: 2;
+    grid-row: 5;
+    margin-bottom: -10px;
+    justify-self: end;
+    text-align: right;
+    font-size: 15px;
+  }
+  .val-summa::before {
+    content: "Summa";
+    display: block;
+    font-weight: 800;
+    font-size: 14px;
+    color: #222;
+    margin-bottom: -5px;
+  }
+  .cart-qty {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: center;
+    margin-top: 5px;
+  }
+  .cart-qty__label {
+    font-size: 14px;
+  }
+  .cart-qty__input {
+    width: 45px;
+    height: 25px;
+    font-size: 13px;
+  }
+  .remove {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: end;
+    justify-self: center;
+    font-size: 12px;
+  }
+  .remove i {
+    font-size: 12px;
+  }
+}
+@media (max-width: 499px) {
+  .cart-item {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    column-gap: 20px;
+  }
+}
+@media (max-width: 442px) {
+  .cart-item {
+    padding: 5px;
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    column-gap: 30px;
+  }
+  .val-summa {
+    grid-column: 2;
+    grid-row: 6;
+    font-size: 14px;
+    padding: 5px 10px 5px 5px;
+  }
+  .val-summa::before {
+    font-size: 13px;
+  }
+  .cart-qty {
+    grid-column: 1;
+    grid-row: 6;
+    margin-bottom: -22px;
+  }
+  .remove {
+    grid-column: 2;
+    grid-row: 6;
+    justify-self: left;
+    margin-bottom: 4px;
+  }
+  .item-info p {
+    font-size: 12px;
+  }
+  .item-title {
+    font-size: 13px;
+  }
+  .val-styck,
+  .val-prisst,
+  .val-prisfp,
+  .val-styck::before,
+  .val-prisst::before,
+  .val-prisfp::before {
+    font-size: 12px;
+  }
+}
+/* checkout-actions + knappar */
+.checkout-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  margin-top: -10px;
+}
+
+.btn {
+  border-radius: 4px;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 550;
+}
+
+.btn-secondary {
+  color: black;
+  font-size: 14px;
+}
+
+.btn-primary {
+  font-size: 14px;
+  color: black;
+  background: none;
+}
+
+@media (max-width: 610px) {
+  .btn-secondary, .btn-primary {
+    font-size: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .checkout-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+/* Orderöversikt: två kolumner */
+.order-summary {
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.order-summary span {
+  font-size: 15px;
+}
+.order-summary h2 {
+  margin: 0 0 10px 0;
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 1fr); /* vänster | höger */
+  gap: 12px 40px; /* rad | kolumn */
+  align-items: stretch;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Rader: etikett till vänster, värde till höger */
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+.row.bold {
+  font-weight: 700;
+}
+
+.label {
+  color: #222;
+}
+
+.value {
+  justify-self: end;
+  color: #111;
+}
+
+/* pinnar "Summa totalt" till botten i högerkolumnen */
+.col-right .total {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  font-weight: 700;
+}
+.col-right .total .label,
+.col-right .total .value {
+  color: #F1942E;
+  font-size: 20px;
+}
+
+@media (max-width: 772px) {
+  .order-grid {
+    grid-template-columns: 1fr;
+    gap: 10px 0;
+  }
+  .col-right .total {
+    margin-top: 0;
+  }
+}
+@media (max-width: 442px) {
+  .order-summary {
+    padding: 10px;
+  }
+  .order-summary h2 {
+    padding-bottom: 2px;
+  }
+  .order-summary span {
+    font-size: 13px;
+  }
+  .col-right .total .label, .col-right .total .value {
+    color: #F1942E;
+    font-size: 1rem;
+  }
+}
+/* Rekommenderade produkter, sista sektionen på varukorgs-sidan (Checkout/Index) */
+.upsell-section {
+  margin: 30px 0 60px 0;
+}
+.upsell-section h2 {
+  margin-bottom: 1rem;
+}
+
+.upsell-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.upsell-card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.upsell-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.card-actions input[type=number] {
+  width: 50px;
+  padding: 0.3rem;
+}
+
+.btn-orange {
+  background: #F1942E;
+  color: white;
+  border: 2px;
+  padding: 8px 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+}
+.btn-orange i {
+  margin-right: 0.4rem;
+}
+.btn-orange.wide {
+  width: 100%;
+  display: block;
+  text-align: center;
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1096px) {
+  .upsell-grid {
+    gap: 1rem;
+  }
+  .upsell-card h3 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 895px) {
+  .upsell-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 468px) {
+  .upsell-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /*# sourceMappingURL=site.css.map */

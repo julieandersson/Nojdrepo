@@ -217,7 +217,7 @@
     justify-content: flex-start;
 
     .sort-controls { order: 1; flex: 1 1 100%; }
-    .searchbar     { order: 2; min-width: 0; }
+    .searchbar     { order: 2; flex: 1 1 auto; min-width: 0; max-width: none; }
     .toolbar-right { order: 2; margin-left: auto; }
   }
 

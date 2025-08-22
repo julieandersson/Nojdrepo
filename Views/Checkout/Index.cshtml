@@ -1,0 +1,193 @@
+@{
+    ViewData["Title"] = "Varukorg";
+}
+
+<div class="breadcrumbs">
+    <a href="#">NÖJD.COM</a> / <span>@ViewData["Title"]</span>
+</div>
+    
+<h1>@ViewData["Title"]</h1>
+    <!-- Produkttabell -->
+    <section class="cart">
+    <h2 class="cart-title">
+        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+        Dina produkter
+    </h2>
+        <!-- KORT 1 (statiskt exempel, byts ut mot dynamisk data senare)-->
+        <article class="cart-item">
+            <figure class="item-media">
+            <img src="~/images/wellada_stangd.png" alt="Wellåda N-82,3">
+            </figure>
+
+            <div class="item-info">
+            <h3 class="item-title">Wellåda N-82,3</h3>
+            <p class="item-spec">570 x 380 x 380/250/180 mm, Artnr: 300823</p>
+            </div>
+
+            <!-- Kolumnrubriker (desktop/tablet) -->
+            <div class="col-head head-styck">Styck</div>
+            <div class="col-head head-prisst">Pris/st</div>
+            <div class="col-head head-prisfp">Pris/fp</div>
+            <div class="col-head head-summa">Summa</div>
+
+            <!-- Värden (under rubrikerna) -->
+            <div class="col-val val-styck">25</div>
+            <div class="col-val val-prisst">42,50 kr</div>
+            <div class="col-val val-prisfp">1037,50 kr</div>
+            <div class="col-val val-summa"><span>1037,50 kr</span></div>
+
+            <!-- Antal -->
+            <div class="cart-qty">
+            <label class="cart-qty__label" for="qty-1">Antal:</label>
+            <input id="qty-1" class="cart-qty__input" type="number" inputmode="numeric" min="1" value="1">
+            </div>
+
+            <!-- Ta bort -->
+            <button class="remove" type="button">
+            <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+            <span>Ta bort</span>
+            </button>
+        </article>
+
+        <!-- KORT 2 (statiskt exempel, byts ut mot dynamisk data senare) -->
+        <article class="cart-item">
+            <figure class="item-media">
+            <img src="~/images/miljofolie.png" alt="PE-folie, Miljöfolie">
+            </figure>
+
+            <div class="item-info">
+            <h3 class="item-title">PE-folie, Miljöfolie</h3>
+            <p class="item-spec">2000 x 0,10 mm x 50 m, Artnr: 100090</p>
+            </div>
+
+            <div class="col-head head-styck">Styck</div>
+            <div class="col-head head-prisst">Pris/st</div>
+            <div class="col-head head-prisfp">Pris/fp</div>
+            <div class="col-head head-summa">Summa</div>
+
+            <div class="col-val val-styck">50</div>
+            <div class="col-val val-prisst">935 kr</div>
+            <div class="col-val val-prisfp">935 kr</div>
+            <div class="col-val val-summa"><span>935 kr</span></div>
+
+            <div class="cart-qty">
+            <label class="cart-qty__label" for="qty-2">Antal:</label>
+            <input id="qty-2" class="cart-qty__input" type="number" inputmode="numeric" min="1" value="1">
+            </div>
+
+            <button class="remove" type="button">
+            <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+            <span>Ta bort</span>
+            </button>
+        </article>
+    </section>
+
+    <div class="checkout-actions">
+        <a href="#" class="btn btn-secondary"><i class="fa-regular fa-heart"></i> Spara varukorg som favoritlista</a>
+        <button class="btn btn-primary">
+        <i class="fa-solid fa-trash-can" aria-hidden="true"></i> Rensa varukorgen
+        </button>
+    </div>
+
+    <!-- Orderöversikt -->
+    <section class="order-summary">
+    <h2>Orderöversikt</h2>
+        <div class="order-grid">
+            <!-- VÄNSTER KOLUMN -->
+            <div class="col col-left">
+                <div class="row">
+                    <span class="label">Summa varor:</span>
+                    <span class="value">1972,50 kr</span>
+                </div>
+                <div class="row">
+                    <span class="label">Betalningsvillkor:</span>
+                    <span class="value">15 dagar netto</span>
+                </div>
+                <div class="row">
+                    <span class="label">Leveranssätt:</span>
+                    <span class="value">Skubbet Mälardalen</span>
+                </div>
+                <div class="row">
+                    <span class="label">Leveransvillkor:</span>
+                    <span class="value">Fritt vid 2000 :- ordervärde</span>
+                </div>
+                <div class="row bold">
+                    <span class="label">Frakt:</span>
+                    <span class="value">Ej medräknat i totalsumman</span>
+                </div>
+            </div>
+
+            <!-- HÖGER KOLUMN -->
+            <div class="col col-right">
+                <div class="row">
+                    <span class="label">Summa exkl. moms:</span>
+                    <span class="value">1972,50 kr</span>
+                </div>
+                <div class="row">
+                    <span class="label">Moms:</span>
+                    <span class="value">493,25 kr</span>
+                </div>
+                <div class="row total">
+                    <span class="label">Summa totalt:</span>
+                    <span class="value">2465,75 kr</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Rekommenderade produkter -->
+    <section class="upsell-section">
+        <h2>Andra produkter som kan passa dig</h2>
+        <div class="upsell-grid">
+
+            <!-- Produktkort (statiskt exempel nu, byts ut mot dynamisk data senare)-->
+            <div class="upsell-card">
+                <img src="~/images/stansad-wellada.png" alt="Produkt 1">
+                <h3>Stansad wellåda Svart</h3>
+                <p>220 x 140 x 50 mm<br>Artnr: 301003</p>
+                <p><strong>kolli</strong> (4000 st à 3,20 kr/st)</p>
+                <div class="card-actions">
+                    <input type="number" min="1" value="1">
+                    <button class="btn btn-orange"><i class="fa-solid fa-cart-shopping"></i> Lägg till</button>
+                </div>
+            </div>
+
+            <div class="upsell-card">
+                <img src="~/images/stansad-wellada.png" alt="Produkt 2">
+                <h3>Stansad wellåda Svart</h3>
+                <p>220 x 140 x 50 mm<br>Artnr: 301003</p>
+                <p><strong>kolli</strong> (4000 st à 3,20 kr/st)</p>
+                <div class="card-actions">
+                    <input type="number" min="1" value="1">
+                    <button class="btn btn-orange"><i class="fa-solid fa-cart-shopping"></i> Lägg till</button>
+                </div>
+            </div>
+
+            <div class="upsell-card">
+                <img src="~/images/stansad-wellada.png" alt="Produkt 3">
+                <h3>Stansad wellåda Svart</h3>
+                <p>220 x 140 x 50 mm<br>Artnr: 301003</p>
+                <p><strong>kolli</strong> (4000 st à 3,20 kr/st)</p>
+                <div class="card-actions">
+                    <input type="number" min="1" value="1">
+                    <button class="btn btn-orange"><i class="fa-solid fa-cart-shopping"></i> Lägg till</button>
+                </div>
+            </div>
+
+            <div class="upsell-card">
+                <img src="~/images/stansad-wellada.png" alt="Produkt 3">
+                <h3>Stansad wellåda Svart</h3>
+                <p>220 x 140 x 50 mm<br>Artnr: 301003</p>
+                <p><strong>kolli</strong> (4000 st à 3,20 kr/st)</p>
+                <div class="card-actions">
+                    <input type="number" min="1" value="1">
+                    <button class="btn btn-orange"><i class="fa-solid fa-cart-shopping"></i> Lägg till</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gå vidare till kassan (ny sida) statiskt nu, justeras dynamiskt senare-->
+    <div class="checkout-actions">
+        <a class="btn btn-orange wide" href="/kassa">Fortsätt till Kassan</a>
+    </div>

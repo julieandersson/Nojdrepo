@@ -1,0 +1,66 @@
+/* Orderöversikt: två kolumner */
+.order-summary {
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+
+  span { font-size: 15px; }
+
+  h2 {
+    margin: 0 0 10px 0;
+  }
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 1fr); /* vänster | höger */
+  gap: 12px 40px; /* rad | kolumn */
+  align-items: stretch;
+}
+
+.col { display: flex; flex-direction: column; gap: 10px; }
+
+/* Rader: etikett till vänster, värde till höger */
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  font-size: 0.95rem;
+
+  &.bold { font-weight: 700; }
+}
+
+.label { color:#222; }
+.value { justify-self: end; color:#111; }
+
+/* pinnar "Summa totalt" till botten i högerkolumnen */
+.col-right .total { 
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+  font-weight: 700;
+  .label,
+  .value { color: #F1942E; font-size: 20px; }
+}
+
+@media (max-width: 772px){
+  .order-grid {
+    grid-template-columns: 1fr;
+    gap: 10px 0;
+  }
+  .col-right .total { margin-top: 0; }
+}
+
+@media (max-width: 442px){
+  .order-summary {
+    padding: 10px;
+
+    h2 { padding-bottom: 2px; }
+    span { font-size: 13px; }
+  }
+
+  .col-right .total {
+    .label, .value { color: #F1942E; font-size: 1rem; }
+  }
+}

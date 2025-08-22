@@ -1,14 +1,13 @@
 /* Rubriker */
 h1 {
-  font-size: 30px;
+  font-size: 1.8rem;
   text-align: left;
   padding-bottom: 20px;
   padding-top: 5px;
 }
 
-h2,
-h3 {
-  padding-bottom: 15px;
+h2 {
+  font-size: 1.4rem;
 }
 
 h3 {
@@ -17,13 +16,33 @@ h3 {
   font-weight: 600;
 }
 
+h2,
+h3 {
+  padding-bottom: 15px;
+}
+
 @media screen and (max-width: 1096px) {
-  h1 { padding-top: 5px; }
+  h1 { padding-top: 5px; font-size: 1.7rem;}
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1rem; }
 }
 
 @media screen and (max-width: 861px) {
+
+  h1 {font-size: 1.6rem; }
+  h2 {font-size: 1.2rem; }
   h3 {
     font-size: 0.9rem;
+    margin-bottom: -10px;
+  }
+}
+
+@media screen and (max-width: 553px) {
+
+  h1 {font-size: 1.4rem; }
+  h2 {font-size: 1rem; }
+  h3 {
+    font-size: 0.8rem;
     margin-bottom: -10px;
   }
 }

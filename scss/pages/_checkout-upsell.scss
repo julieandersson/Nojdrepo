@@ -1,0 +1,89 @@
+/* Rekommenderade produkter, sista sektionen på varukorgs-sidan (Checkout/Index) */
+.upsell-section {
+  margin: 30px 0 60px 0;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.upsell-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.upsell-card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  padding: 1rem;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 2px;
+  }
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+
+  input[type="number"] {
+    width: 50px;
+    padding: 0.3rem;
+  }
+}
+
+.btn-orange {
+  background: #F1942E;
+  color: white;
+  border: 2px;
+  padding: 8px 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+
+  i { margin-right: 0.4rem; }
+
+  &.wide {
+    width: 100%;
+    display: block;
+    text-align: center;
+    height: 50px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 1096px) {
+    .upsell-grid {
+        gap: 1rem;
+    }
+    .upsell-card h3 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 895px) {
+    .upsell-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 468px) {
+    .upsell-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
