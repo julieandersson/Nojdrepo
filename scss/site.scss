@@ -9,6 +9,7 @@
 @use 'layout/header';
 @use 'layout/navigation';
 @use 'layout/footer';
+@use 'layout/checkout-header';
 
 /* Components */
 @use 'components/overlay';
@@ -25,6 +26,7 @@
 
 /* Pages */
 @use 'pages/categories';
+@use 'pages/checkout';
 @use 'pages/checkout-cart';
 @use 'pages/checkout-order';
 @use 'pages/checkout-upsell';

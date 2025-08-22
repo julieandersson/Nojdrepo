@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Kassa";
+}
+
+    <div class="breadcrumbs">
+        <a href="#">NÖJD.COM</a> / <a href="#">Varukorg</a> / <span>@ViewData["Title"]</span>
+    </div>
+
+    <h1>@ViewData["Title"]</h1>
+        <p class="back-to-cart">
+            <a href="/varukorg">← Tillbaka till varukorgen</a>
+        </p>
+
+        <h3>Ordersammanfattning</h3>
+
+        <!-- Leverans & Betalning -->
+        <section class="payment-section">
+            <h3>Leverans & Betalning</h3>
+
+            <div class="payment-form">
+                <p><strong>Fyll i dina uppgifter nedan</strong><br>
+                Fält märkta med * är obligatoriska</p>
+
+                <label>E-postadress: *</label>
+                <input type="email" placeholder="anvandare@gmail.com" required>
+
+                <label>Organisationsnummer: *</label>
+                <input type="text" placeholder="556677-8899">
+
+                <label>Faktureringsadress:</label>
+                <input type="text" placeholder="Företag AB Hittepå...">
+
+                <div class="form-grid">
+                    <div>
+                        <label>Förnamn: *</label>
+                        <input type="text" placeholder="Användare" required>
+                    </div>
+                    <div>
+                        <label>Efternamn: *</label>
+                        <input type="text" placeholder="Användarsson" required>
+                    </div>
+                </div>
+
+                <label>Mobilnummer:</label>
+                <input type="tel" placeholder="Ange mobilnummer">
+
+                <label>Orderreferens:</label>
+                <input type="text" placeholder="Beställningsnummer">
+
+                <label>Ev. meddelande:</label>
+                <input type="text" placeholder="Godsmärkning">
+
+                <label>Välj leveransdag:</label>
+                <input type="date">
+
+                <label>Välj leveransadress:</label>
+                <select>
+                    <option selected>Företag AB Hittepå...</option>
+                </select>
+
+                <label>Företagsnamn:</label>
+                <input type="text" placeholder="Företag AB">
+
+                <div class="form-grid">
+                    <div>
+                        <label>Adressrad 1:</label>
+                        <input type="text" placeholder="Gatan 1">
+                    </div>
+                    <div>
+                        <label>Adressrad 2:</label>
+                        <input type="text" placeholder="Ange adress">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div>
+                        <label>Postnummer:</label>
+                        <input type="text" placeholder="12345">
+                    </div>
+                    <div>
+                        <label>Ort:</label>
+                        <input type="text" placeholder="STOCKHOLM">
+                    </div>
+                </div>
+
+                <br />
+
+                <a href="/kassa/bekraftelse" class="btn btn-orange wide">Slutför köp</a>
+                <p class="terms">Genom att klicka “Slutför köp” godkänner du våra <a href="#">köpvillkor</a></p>
+            </div>
+        </section>
+    <br />

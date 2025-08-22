@@ -971,6 +971,55 @@ header {
     grid-template-columns: 1fr;
   }
 }
+/* AVSKALAD HEADER I KASSAN: logo, topmenu, mainmenu */
+body.is-checkout {
+  /* döljer allt förutom loggan och själva "baren" */
+  /* sätter "mainmenu" som den enda headern */
+  /* positionerar loggan */
+}
+body.is-checkout .topmenu,
+body.is-checkout .navigation,
+body.is-checkout .search-wrapper,
+body.is-checkout .button-group,
+body.is-checkout .hamburger-toggle {
+  display: none !important;
+}
+body.is-checkout .mainmenu {
+  background: #003978;
+  height: 64px;
+  padding: 12px 0;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+body.is-checkout .mainmenu-inner {
+  padding-left: 80px;
+  padding-right: 40px;
+  gap: 0;
+  justify-content: flex-start; /* placerar loggan först, tomt efter */
+}
+body.is-checkout .logo {
+  padding-left: 40px;
+  top: -1px;
+}
+body.is-checkout .logo img {
+  width: 102px;
+  transition: width 0.3s ease;
+}
+body.is-checkout .logo.shrink img { /* krymper vid scroll */
+  width: 66px;
+}
+body.is-checkout main {
+  margin-top: 10px;
+}
+
+@media (max-width: 1096px) {
+  body.is-checkout .logo {
+    padding-left: 20px !important;
+    position: absolute;
+  }
+  body.is-checkout .logo img {
+    width: 90px;
+  }
+}
 /* Components */
 /* ================================
    OVERLAY bakom flyouts
@@ -2706,6 +2755,54 @@ header {
 }
 .cta-btn:hover {
   background: #e98c1b;
+}
+
+/* KASSA - Leverans & Betalning */
+/* Tillbaka till varukorgen */
+.back-to-cart a {
+  display: inline-block;
+  color: #000000;
+  font-style: italic;
+  text-decoration: none;
+  padding-bottom: 20px;
+}
+
+/* Formulär-regler */
+.payment-section {
+  margin-top: 2rem;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+}
+
+.payment-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 14px;
+}
+.payment-form input,
+.payment-form select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-grid {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.form-grid > div {
+  flex: 1;
+}
+
+.terms {
+  font-size: 0.85rem;
+  margin-top: 1rem;
 }
 
 /* VARUKORG – Tabell */

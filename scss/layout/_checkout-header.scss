@@ -1,0 +1,45 @@
+/* AVSKALAD HEADER I KASSAN: logo, topmenu, mainmenu */
+
+body.is-checkout {
+  /* döljer allt förutom loggan och själva "baren" */
+  .topmenu,
+  .navigation,
+  .search-wrapper,
+  .button-group,
+  .hamburger-toggle {
+    display: none !important;
+  }
+
+  /* sätter "mainmenu" som den enda headern */
+  .mainmenu {
+    background: #003978;
+    height: 64px;
+    padding: 12px 0;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  }
+
+  .mainmenu-inner {
+    padding-left: 80px;
+    padding-right: 40px;
+    gap: 0;
+    justify-content: flex-start; /* placerar loggan först, tomt efter */
+  }
+
+  /* positionerar loggan */
+  .logo { padding-left: 40px; top: -1px; }
+  .logo img { width: 102px; transition: width 0.3s ease; }
+  .logo.shrink img { /* krymper vid scroll */
+    width: 66px;
+  }
+
+  main {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 1096px){
+  body.is-checkout {
+    .logo { padding-left: 20px!important; position: absolute; }
+    .logo img { width: 90px; }
+  }
+}
