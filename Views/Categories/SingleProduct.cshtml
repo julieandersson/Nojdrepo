@@ -1,0 +1,163 @@
+@{
+    var title = ViewBag.ProductSlug ?? "Produkt";
+    ViewData["Title"] = title;
+}
+
+<div class="product-page">
+    <div class="breadcrumbs">
+        <a href="#">NÖJD.COM</a> / <a href="#">WELL</a> / <a href="#">WELLÅDOR</a> / <span>@ViewData["Title"]</span>
+    </div>
+
+    <div class="product-container">
+        <!-- Vänster kolumn (bilder) -->
+        <div class="product-images">
+            <div class="thumbnails">
+                <img src="~/images/wellada_oppen.png" alt="Bild 1" />
+                <img src="~/images/wellada_stangd.png" alt="Bild 2" />
+                <img src="~/images/wellada_platt.png" alt="Bild 3" />
+            </div>
+
+            <div class="main-image">
+                <button class="zoom-btn" aria-label="Förstora bild">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+                <img src="~/images/wellada_oppen.png" alt="Huvudbild" />
+                <div class="image-meta">
+                    <span class="meta-inline">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        Fraktfritt vid ordervärde överstigande 2000:-
+                    </span>
+                    <div class="meta-logos">
+                        <img src="~/images/rgb_ekonomi_large.png" alt="Svea Ekonomi" />
+                        <img src="~/images/tryggehandel.svg" alt="Trygg e-handel" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Höger kolumn (produktinfo) -->
+        <div class="product-info">
+            <div class="info-top">
+                <h2 class="product-title">@title</h2>
+
+                <!-- Betyg uppe till höger -->
+                <div class="product-rating" aria-label="Betyg 4,5 av 5">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+            </div>
+
+            <p class="price-line">Från <span>16,6 kr</span> / st</p>
+
+            <ul class="meta-list">
+                <li><strong>Mått:</strong> 570 x 380 x 380/250/180 mm</li>
+                <li><strong>Pallanpassad storlek</strong>, 4 st per varv på pallen</li>
+                <li><strong>Artikelnr:</strong> 300823</li>
+            </ul>
+
+            <div class="variants">
+                <div class="variants-title">Går att köpa i 3 olika varianter</div>
+
+                <!-- kolli -->
+                <div class="variant-row">
+                    <div class="variant-qty">
+                    <input type="number" class="qty-input" value="1" min="1" inputmode="numeric" />
+                    </div>
+                    <div class="variant-desc">
+                    <strong>kolli</strong> <span class="muted">(20st á 13,35 kr/st)</span>
+                    </div>
+                    <div class="variant-price">267,00 kr</div>
+                    <button class="variant-add" type="button">
+                    <i class="fa-solid fa-cart-shopping"></i> Köp
+                    </button>
+                </div>
+
+                <!-- halvpall -->
+                <div class="variant-row">
+                    <div class="variant-qty">
+                    <input type="number" class="qty-input" value="1" min="1" inputmode="numeric" />
+                    </div>
+                    <div class="variant-desc">
+                    <strong>halvpall</strong> <span class="muted">(480st á 8,01 kr/st)</span>
+                    </div>
+                    <div class="variant-price">3.844,80 kr</div>
+                    <button class="variant-add" type="button">
+                    <i class="fa-solid fa-cart-shopping"></i> Köp
+                    </button>
+                </div>
+
+                <!-- helpall -->
+                <div class="variant-row">
+                    <div class="variant-qty">
+                    <input type="number" class="qty-input" value="1" min="1" inputmode="numeric" />
+                    </div>
+                    <div class="variant-desc">
+                    <strong>helpall</strong> <span class="muted">(960st á 5,34 kr/st)</span>
+                    </div>
+                    <div class="variant-price">5.126,40 kr</div>
+                    <button class="variant-add" type="button">
+                    <i class="fa-solid fa-cart-shopping"></i> Köp
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-cta-row">
+                <div class="status-row">
+                    <span class="stock ok">✔ Finns i lager</span>
+                    <span class="ship"><i class="fa-solid fa-truck-fast"></i> Skickas omgående</span>
+                </div>
+
+                <!-- FAVORIT -->
+                <div class="cta-stack">
+                    <button class="fav-link" type="button">
+                        <i class="fa-regular fa-heart"></i>
+                        Spara som favorit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flikar -->
+    <div class="product-tabs">
+        <button class="product-tab is-active" data-tab="spec">Om produkten</button>
+        <button class="product-tab" data-tab="desc">Beskrivning</button>
+        <button class="product-tab" data-tab="reviews">Recensioner</button>
+    </div>
+
+    <!-- Paneler -->
+    <div class="tab-panels">
+        <section id="tab-spec" class="tab-panel is-active">
+            <div class="spec-grid">
+                <table class="spec spec-left">
+                    <tbody>
+                        <tr><td>Varugrupp</td><td>1.10.10.15</td></tr>
+                        <tr><td>Mått</td><td>570 x 380 x 380/250/180 mm</td></tr>
+                        <tr><td>Enhet</td><td>ST</td></tr>
+                        <tr><td>Antal per kolli</td><td>25</td></tr>
+                        <tr><td>Antal per pall</td><td>150</td></tr>
+                        <tr><td>Vikt</td><td>0.74</td></tr>
+                    </tbody>
+                </table>
+                <table class="spec spec-right">
+                    <tbody>
+                        <tr><td>Djup</td><td>380</td></tr>
+                        <tr><td>Bredd</td><td>380</td></tr>
+                        <tr><td>Höjd</td><td>380</td></tr>
+                        <tr><td>Längd</td><td>570</td></tr>
+                        <tr><td>Artikelnr.</td><td>300823</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="tab-desc" class="tab-panel">
+            <p>Beskrivningstext här …</p>
+        </section>
+        <section id="tab-reviews" class="tab-panel">
+            <p>Inga recensioner ännu.</p>
+        </section>
+    </div>
+</div>

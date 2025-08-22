@@ -8,6 +8,7 @@ import { initReorderTopmenuForTablet } from './header/reorderTopmenu.js';
 import { initDropdownDelay } from './header/dropdownDelay.js';
 import { initFlyout } from './ui/flyout.js';
 import { initCategoriesProducts } from './pages/categories-products.js';
+import { initTabs } from './ui/tabs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // header & navigationsbeteenden
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReorderTopmenuForTablet();
   initDropdownDelay();
   initCategoriesProducts();
+  initTabs();
 
   // Flyouts (login och varukorg)
   initFlyout({

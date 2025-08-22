@@ -942,6 +942,7 @@ header {
     grid-template-columns: 1fr;
   }
 }
+/* Components */
 /* ================================
    OVERLAY bakom flyouts
    ================================ */
@@ -2022,6 +2023,621 @@ header {
     margin: -25px auto;
   }
 }
+/* PRODUKT-DETALJER – bas, layout, info, status & CTA */
+.product-page {
+  margin: 0 auto 20px;
+  /* topp-rad i högerspalten: titel vänster, stjärnor höger */
+  /* rad som håller status (vänster) + CTA-stack (höger) */
+  /* Status */
+  /* CTA – favorit över köp */
+  /* om rating + rubrik blir för breda */
+}
+.product-page .product-container {
+  display: grid;
+  grid-template-columns: 600px 1fr; /* bilder + info */
+  gap: 28px;
+  max-width: 1500px;
+  background: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 30px;
+  margin: 0 auto;
+  align-items: start;
+}
+.product-page .product-info .info-top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.product-page .product-rating {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #111;
+}
+.product-page .price-line {
+  font-size: 15px;
+  margin: 0 0 10px 0;
+}
+.product-page .price-line span {
+  color: #e67e22;
+  font-weight: 700;
+  font-size: 20px;
+}
+.product-page .meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 14px 0;
+}
+.product-page .meta-list li {
+  margin: 0;
+  font-size: 15px;
+  line-height: 2rem;
+}
+.product-page .status-cta-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 26px;
+}
+.product-page .status-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+}
+.product-page .status-row .ok {
+  color: #1b8e2a;
+  font-weight: 600;
+}
+.product-page .status-row .ship {
+  font-weight: 600;
+}
+.product-page .cta-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 0;
+}
+.product-page .fav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+}
+.product-page .buy-now,
+.product-page .variant-add {
+  background-color: #F1942E;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 22px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.product-page .buy-now {
+  min-width: 180px;
+}
+.product-page .buy-now:hover,
+.product-page .variant-add:hover {
+  background: #e98c1b;
+}
+.product-page .variant-add {
+  font-size: 14px;
+  min-width: 0;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .product-page .product-info .info-top {
+    flex-wrap: wrap;
+  }
+  .product-page .product-rating {
+    margin-left: 0;
+  }
+}
+@media (max-width: 760px) {
+  .product-page .status-cta-row {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .product-page .cta-stack {
+    align-items: stretch;
+    width: 100%;
+  }
+  .product-page .buy-now {
+    width: 100%;
+  }
+  .product-page .fav-link {
+    align-self: flex-end;
+  }
+}
+@media (max-width: 1289px) {
+  .product-page .product-container {
+    grid-template-columns: 500px 1fr;
+  }
+  .product-page .variants-title {
+    font-size: 15px;
+  }
+  .product-page .meta-list li {
+    font-size: 14px;
+  }
+  .product-page .product-title {
+    font-size: 20px;
+  }
+  .product-page .image-meta {
+    font-size: 11px;
+  }
+}
+@media (max-width: 1146px) {
+  .product-page .product-container {
+    grid-template-columns: 430px 1fr;
+  }
+}
+@media (max-width: 1096px) {
+  .product-page .product-container {
+    grid-template-columns: 400px 1fr;
+  }
+}
+@media (max-width: 1010px) {
+  .product-page .product-container {
+    grid-template-columns: 1fr;
+  }
+  .product-page .product-title {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1000px) {
+  .product-page .product-container {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 550px) {
+  .product-page .product-container {
+    padding: 20px;
+  }
+  .product-page .fav-link,
+  .product-page .status-row .ok,
+  .product-page .status-row .ship {
+    font-size: 12px;
+  }
+}
+.product-page .product-info .info-top {
+  flex-wrap: wrap;
+}
+.product-page .product-rating {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* PRODUKT-BILDER – thumbnails, huvudbild, meta under bild */
+.product-images {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.thumbnails img {
+  width: 110px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  background: #f3f3f3;
+  filter: brightness(0.9);
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  height: auto;
+}
+
+.main-image {
+  position: relative;
+  max-width: 100%;
+}
+.main-image img {
+  width: 400px;
+  max-width: 100%;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  width: 100%;
+  max-width: 100%;
+}
+.main-image .zoom-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.image-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+  flex-wrap: wrap;
+}
+.image-meta .meta-logos {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.image-meta .meta-logos img {
+  height: 30px;
+  width: auto;
+  border: none;
+  box-shadow: none;
+  background: none;
+  max-width: 100%;
+  height: 30px;
+}
+
+@media (max-width: 1289px) {
+  .thumbnails img {
+    width: 90px;
+  } /* mindre thumbnails på smalare skärm */
+  .product-images {
+    gap: 30px;
+  }
+  .image-meta {
+    font-size: 11px;
+  }
+}
+@media (max-width: 1146px) {
+  .thumbnails img {
+    width: 70px;
+  }
+  .product-images {
+    gap: 20px;
+  }
+  .image-meta .meta-logos img {
+    height: 25px;
+  } /* mindre loggor */
+}
+@media (max-width: 1096px) {
+  .image-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+@media (max-width: 1010px) {
+  .product-images {
+    order: -1;
+    justify-content: center;
+  }
+  .thumbnails img {
+    width: 90px;
+  }
+  .image-meta .meta-logos img {
+    height: 30px;
+  } /* mindre loggor */
+}
+@media (max-width: 524px) {
+  .product-images {
+    flex-direction: column; /* staplar thumbnails över main */
+    align-items: stretch;
+    gap: 12px;
+  }
+  .main-image {
+    width: 100%;
+    max-width: 100%;
+  }
+  .thumbnails {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    justify-items: stretch;
+  }
+  .thumbnails img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+}
+/* PRODUKT-VARIANER – kolli/halvpall/helpall */
+.variants {
+  margin-top: 8px;
+}
+
+.variants-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.variant-row {
+  display: grid;
+  grid-template-columns: 50px 1fr auto auto; /* [antal] [beskrivning] [pris] [köp] */
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.variant-qty .qty-input {
+  width: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.variant-desc strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+.variant-desc .muted {
+  color: #666;
+  font-size: 14px;
+}
+
+.variant-price {
+  font-weight: 700;
+  font-size: 17px;
+  white-space: nowrap;
+  text-align: right;
+  min-width: 120px;
+}
+
+.variant-add {
+  background-color: #F1942E;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 0;
+  width: 90px;
+}
+
+.variant-add:hover {
+  background: #e98c1b;
+}
+
+/* varianter */
+.variant-row {
+  min-width: 0;
+}
+
+.variant-desc {
+  min-width: 0;
+}
+
+.variant-price {
+  min-width: 0;
+}
+
+.variant-add {
+  width: auto;
+} /* låter knappen krympa om det behövs */
+@media (max-width: 568px) {
+  .variants {
+    margin-top: 12px;
+  }
+  .variants-title {
+    margin-bottom: 10px;
+    font-size: 14px !important;
+  }
+  .variant-row {
+    /* två kolumner: antal + text ovan, pris + knapp under */
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    grid-template-areas: "qty   desc" "price buy";
+    row-gap: 10px;
+    column-gap: 12px;
+    padding: 12px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    min-width: 0;
+  }
+  .variant-qty {
+    grid-area: qty;
+    align-self: stretch;
+    display: grid;
+    place-items: center;
+  }
+  .variant-qty .qty-input {
+    width: 48px;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .variant-qty .qty-input::-webkit-outer-spin-button, .variant-qty .qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .variant-desc {
+    grid-area: desc;
+    min-width: 0;
+    line-height: 1.35;
+  }
+  .variant-desc strong {
+    font-size: 16px;
+  }
+  .variant-desc .muted {
+    color: #666;
+    font-size: 13px;
+  }
+  .variant-price {
+    grid-area: price;
+    text-align: left;
+    min-width: 0;
+    align-self: center;
+  }
+  .variant-add {
+    grid-area: buy;
+    justify-self: end;
+    min-height: 44px;
+    padding: 12px 18px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    width: auto; /* låter knappen växa/krympa inut sin cell */
+  }
+  .variant-row:focus-within {
+    border-color: #F1942E;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  .variant-row:hover {
+    border-color: #e0e0e0;
+  }
+}
+@media (max-width: 420px) {
+  .variant-row {
+    /* pris och köp på varsin egen rad, knappen under i fullbredd */
+    grid-template-columns: 64px 1fr;
+    grid-template-areas: "qty   desc" "price price" "buy   buy";
+    row-gap: 10px;
+  }
+  .variant-price {
+    justify-self: start;
+    margin-top: 2px;
+    font-size: 15px;
+  }
+  .variant-desc strong {
+    font-size: 15px;
+  }
+  .variant-add {
+    justify-self: stretch;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 360px) {
+  .variant-row {
+    grid-template-columns: 56px 1fr;
+    padding: 10px;
+  }
+  .variant-qty .qty-input {
+    width: 56px;
+    height: 40px;
+    font-size: 15px;
+  }
+  .variant-desc .muted {
+    font-size: 12px;
+  }
+  .variant-add {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+/* PRODUKT-TABS – flikar, paneler, spec-tabeller */
+.product-tabs {
+  margin: 18px auto 0;
+  max-width: 1500px;
+  display: flex;
+  gap: 8px;
+  padding-top: 5px;
+  flex-wrap: wrap;
+}
+@media (max-width: 430px) {
+  .product-tabs {
+    gap: 2px;
+  }
+}
+
+.product-tab {
+  background: #ebebeb;
+  border: none;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: -2px -2px 2px rgba(0, 0, 0, 0.02);
+  flex: 0 0 auto;
+  min-width: unset;
+}
+.product-tab.is-active {
+  background: #fff;
+}
+@media (max-width: 430px) {
+  .product-tab {
+    font-size: 12px;
+  }
+}
+
+.tab-panels {
+  max-width: 1500px;
+  margin: 0 auto;
+  border-radius: 0 4px 4px 4px;
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 14px;
+}
+.spec-grid .spec {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.spec-grid .spec td {
+  border: 1px solid #eee;
+  padding: 7px;
+}
+.spec-grid .spec td:first-child {
+  font-weight: 600;
+}
+@media (max-width: 430px) {
+  .spec-grid .spec {
+    font-size: 12px;
+  }
+}
+@media (min-width: 900px) {
+  .spec-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Pages */
 /* KATEGORI-SIDA */
 .fullwidth-section {
   background: #eaeef3;

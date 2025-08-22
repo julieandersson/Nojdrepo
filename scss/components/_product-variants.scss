@@ -1,0 +1,163 @@
+/* PRODUKT-VARIANER – kolli/halvpall/helpall */
+.variants { margin-top: 8px; }
+.variants-title { font-weight: 600; margin-bottom: 6px; }
+
+.variant-row {
+  display: grid;
+  grid-template-columns: 50px 1fr auto auto; /* [antal] [beskrivning] [pris] [köp] */
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.variant-qty {
+  .qty-input {
+    width: 50px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+  }
+}
+
+.variant-desc {
+  strong { font-size: 14px; font-weight: 700; }
+  .muted { color: #666; font-size: 14px; }
+}
+
+.variant-price {
+  font-weight: 700;
+  font-size: 17px;
+  white-space: nowrap;
+  text-align: right;
+  min-width: 120px;
+}
+
+.variant-add {
+  background-color: #F1942E;
+  color:#fff; border:none; border-radius:4px;
+  padding:12px 15px; font-size:14px; cursor:pointer; min-width:0; width: 90px;
+}
+.variant-add:hover { background: #e98c1b; }
+
+/* varianter */
+.variant-row { min-width: 0; }
+.variant-desc { min-width: 0; }
+.variant-price { min-width: 0; }
+.variant-add { width: auto; } /* låter knappen krympa om det behövs */
+
+@media (max-width:568px){
+  .variants { margin-top: 12px; }
+  .variants-title { margin-bottom: 10px; font-size: 14px!important;}
+
+  .variant-row{
+    /* två kolumner: antal + text ovan, pris + knapp under */
+    display:grid;
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      "qty   desc"
+      "price buy";
+    row-gap: 10px;
+    column-gap: 12px;
+    padding:12px;
+    border:1px solid #e8e8e8;
+    border-radius:4px;
+    background:#fff;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    min-width:0;
+  }
+
+  .variant-qty{ 
+    grid-area: qty; 
+    align-self: stretch; 
+    display:grid; 
+    place-items:center; 
+
+    .qty-input{
+      width: 48px; 
+      height: 40px;
+      padding: 8px;
+      border: 1px solid #cfcfcf;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button{ -webkit-appearance: none; margin:0; }
+    }
+  }
+
+  .variant-desc{ 
+    grid-area: desc; 
+    min-width:0;
+    line-height: 1.35;
+
+    strong{ font-size: 16px; }
+    .muted{ color:#666; font-size: 13px; }
+  }
+
+  .variant-price{
+    grid-area: price;
+    text-align: left;
+    min-width: 0;
+    align-self: center;
+  }
+
+  .variant-add{
+    grid-area: buy;
+    justify-self: end;
+    min-height: 44px;
+    padding: 12px 18px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    width: auto; /* låter knappen växa/krympa inut sin cell */
+  }
+
+  .variant-row:focus-within{
+    border-color:#F1942E;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  }
+  .variant-row:hover{ border-color:#e0e0e0; }
+}
+
+@media (max-width: 420px){
+  .variant-row{
+    /* pris och köp på varsin egen rad, knappen under i fullbredd */
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      "qty   desc"
+      "price price"
+      "buy   buy";
+    row-gap: 10px;
+  }
+
+  .variant-price{
+    justify-self: start;
+    margin-top: 2px;
+    font-size: 15px;
+  }
+
+  .variant-desc { 
+    strong{ font-size:15px; }
+  }
+
+  .variant-add {
+    justify-self: stretch;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px){
+  .variant-row{ grid-template-columns: 56px 1fr; padding:10px; }
+  .variant-qty { 
+    .qty-input{ width:56px; height:40px; font-size:15px; } 
+  }
+  .variant-desc { 
+    .muted{ font-size:12px; }
+  }
+  .variant-add{ font-size:15px; padding:12px; }
+}
