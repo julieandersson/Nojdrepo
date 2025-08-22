@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Tack för din beställning!";
+}
+
+<!-- STATISKT INNEHÅLL, BYTS UT MOT DYNAMISKT  -->
+
+<div class="confirmation-container">
+    <!-- checkmark + rubrik -->
+    <img src="~/images/checkmark.png" alt="Bekräftelse" class="confirmation-image" />
+    <h1 class="confirmation-title">@ViewData["Title"]</h1>
+    <p class="confirmation-text">Vi har mottagit din order och kommer att börja arbeta med den omedelbart.</p>
+
+    <!-- ordernummer -->
+    <div class="order-number-box">
+        Ordernummer<br />
+        <strong>#NOJD-2025-001234</strong>
+    </div>
+
+    <!-- Vad händer nu?-sektion -->
+    <section class="next-steps">
+        <img src="~/images/clock.png" alt="Klockikon" class="step-icon" />
+        <h2>Vad händer nu?</h2>
+        <p class="step-intro">
+            Vi guidar dig genom hela processen från orderbekräftelse till leverans. Här är vad du kan förvänta dig de kommande dagarna.
+        </p>
+
+        <div class="step-grid">
+            <div class="step-box green">
+                <h3>Steg 1 <span class="tag">Omedelbart</span></h3>
+                <strong>Orderbekräftelse</strong>
+                <p>Vi har mottagit din beställning och skickat en bekräftelse till din e-post</p>
+            </div>
+            <div class="step-box blue">
+                <h3>Steg 2 <span class="tag">1-3 arbetsdagar</span></h3>
+                <strong>Produktionsfas</strong>
+                <p>Vårt team börjar förbereda dina förpackningslösningar enligt dina specifikationer</p>
+            </div>
+            <div class="step-box gray">
+                <h3>Steg 3 <span class="tag">4-5 arbetsdagar</span></h3>
+                <strong>Kvalitetskontroll</strong>
+                <p>Vi kontrollerar att alla produkter uppfyller våra höga kvalitetsstandarder</p>
+            </div>
+            <div class="step-box gray">
+                <h3>Steg 4 <span class="tag">5-7 arbetsdagar</span></h3>
+                <strong>Leverans</strong>
+                <p>Din order packas och skickas till din angivna adress med spårningsinformation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frågor-sektion -->
+    <section class="contact-help">
+        <h2>Har du frågor?</h2>
+        <p>Vårt kundtjänstteam finns här för att hjälpa dig med alla frågor om din beställning</p>
+
+        <div class="contact-methods">
+            <div class="contact-box">
+                <img src="~/images/email-icon.png" alt="E-post" class="contact-icon" />
+                <h3>E-post</h3>
+                <p>Skicka oss ett meddelande så svarar vi inom 24 timmar</p>
+                <span class="contact-detail">order@nojd.com</span>
+            </div>
+
+            <div class="contact-box">
+                <img src="~/images/phone-icon.png" alt="Telefon" class="contact-icon" />
+                <h3>Telefon</h3>
+                <p>Ring oss under kontorstid för snabb hjälp</p>
+                <span class="contact-detail">0171-46 80 00</span>
+            </div>
+        </div>
+    </section>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-orange wide">
+    Tillbaka till startsidan
+    </a>
+</div>

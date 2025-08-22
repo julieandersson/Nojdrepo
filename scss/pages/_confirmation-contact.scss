@@ -1,0 +1,51 @@
+/* Sektion för kontakt-möjligheter på bekräftelsesida */
+.contact-help {
+  margin: 30px 0 50px 0;
+  padding-top: 2rem;
+}
+
+.contact-methods {
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.contact-box {
+  background: #fff;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.contact-icon {
+  width: 70px;
+  margin-bottom: 0.5rem;
+}
+
+.contact-detail {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 1010px) {
+    .contact-methods {
+    gap: 1rem;
+    }
+    .contact-box {
+    padding: 1rem;
+    font-size: 14px;
+    }
+    .contact-box p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 785px) {
+    .contact-methods { grid-template-columns: 1fr;}
+    .contact-icon {
+    width: 50px;
+    margin-bottom: 0;
+   }
+}

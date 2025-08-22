@@ -1,0 +1,64 @@
+/* "Vad händer nu?"-sektion på bekräftelsesida */
+
+.next-steps {
+  margin-top: 3rem;
+}
+
+.step-icon {
+  width: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.step-intro {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.step-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.step-box {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+
+  h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &.green .tag { background: #d1fae5; color: #047857; }
+  &.blue  .tag { background: #e0f2fe; color: #0369a1; }
+  &.gray  .tag { background: #f3f4f6; color: #4b5563; }
+}
+
+.tag {
+  background: #eee;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 1010px) {
+    .step-grid {
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 785px) {
+    .step-grid {
+    grid-template-columns: repeat(1, 1fr);
+    }
+    .step-grid p {
+        font-size: 13px;
+    }
+}

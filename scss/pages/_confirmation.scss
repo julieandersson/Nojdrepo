@@ -1,0 +1,45 @@
+/* Grundlayout för bekräftelse-sida */
+
+.confirmation-container {
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.confirmation-image {
+  width: 90px;
+  margin: 1rem auto;
+  display: block;
+}
+
+.confirmation-text {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.confirmation-title {
+    text-align: center;
+}
+
+.order-number-box {
+  background: #fff;
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin: 1rem auto 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 1010px) {
+    .confirmation-image {
+        width: 70px;
+    }
+    .confirmation-text {
+    font-size: 0.9rem;
+    }
+
+    .order-number-box {
+        font-size: 1rem;
+    }
+}
