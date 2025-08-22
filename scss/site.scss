@@ -19,10 +19,11 @@
 @use 'components/product-listing';
 @use 'components/breadcrumbs';
 @use 'components/categories-images';
-@use "components/product-detail";
-@use "components/product-images";
-@use "components/product-variants";
-@use "components/product-tabs";
+@use 'components/product-detail';
+@use 'components/product-images';
+@use 'components/product-variants';
+@use 'components/product-tabs';
+@use 'components/feature-section';
 
 /* Pages */
 @use 'pages/categories';

@@ -2712,8 +2712,7 @@ body.is-checkout main {
   }
 }
 
-/* Pages */
-/* KATEGORI-SIDA */
+/* KATEGORI-SIDA - Wellådor info-sektion */
 .fullwidth-section {
   background: #eaeef3;
   margin-inline: calc(50% - 50vw);
@@ -2724,7 +2723,7 @@ body.is-checkout main {
 .content-container {
   width: 100%;
   max-width: 1500px;
-  padding: 20px 40px;
+  padding: 10px 30px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -2734,6 +2733,7 @@ body.is-checkout main {
 .info-image img {
   max-width: 300px;
   height: auto;
+  display: block;
 }
 
 .info-text {
@@ -2747,16 +2747,68 @@ body.is-checkout main {
   align-self: flex-end; /* knappen till höger */
   background: #F1942E;
   color: #fff;
-  padding: 12px 20px;
+  padding: 8px 20px;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
+  font-size: 14px;
   margin-top: 20px;
+  display: inline-block;
 }
 .cta-btn:hover {
   background: #e98c1b;
 }
 
+@media (max-width: 1096px) {
+  .content-container {
+    padding: 20px 24px;
+    gap: 1.5rem;
+  }
+  .info-image img {
+    max-width: 280px;
+  }
+  .info-text p {
+    font-size: 13px;
+  }
+}
+/* växlar till kolumn, centrerar innehåll */
+@media (max-width: 830px) {
+  .content-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 10px;
+    align-items: center; /* centrerar bild och text */
+    gap: 0rem;
+  }
+  .info-image {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .info-image img {
+    max-width: 240px;
+  }
+  .info-text {
+    width: 100%;
+    align-items: center; /* centrerar rubrik, text, knapp */
+  }
+  .cta-btn {
+    align-self: center; /* flyttar knappen till mitten */
+    margin-top: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .info-image img {
+    max-width: 220px;
+  }
+  .cta-btn {
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    padding: 5px 20px;
+  }
+}
+/* Pages */
 /* KASSA - Leverans & Betalning */
 /* Tillbaka till varukorgen */
 .back-to-cart a {
